@@ -1,0 +1,1 @@
+from apps.accounts.views.verify_emails import VerifyEmailView
