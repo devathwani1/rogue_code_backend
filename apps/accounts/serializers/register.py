@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 
 from apps.profiles.models.profile import Profile
 from django.db import transaction
+from apps.accounts.services.auth import AuthService
 User = get_user_model()
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -31,4 +32,9 @@ class RegisterSerializer(serializers.ModelSerializer):
                 is_verified=False
             )
             profile = Profile.objects.create(user=user)
+        
+        request = self.context.get("request")
+        if request:
+            AuthService.send_verification_email(user, request)
+            
         return user

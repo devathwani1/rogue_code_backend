@@ -23,15 +23,13 @@ class ProfileSerializer(serializers.ModelSerializer):
             "is_rogue",
         )
 
-    def patch(self, request):
-        profile = request.user.rogue
-
-        if profile.joined_challenge_at and (
-            "language" in request.data or
-            "difficulty" in request.data
-        ):
-            raise serializers.ValidationError(
-               "Cannot change language or difficulty after challenge starts"
-            )
+    def validate(self, data):
+        profile = self.instance
+        if profile and profile.joined_challenge_at:
+            if "language" in data or "difficulty" in data:
+                raise serializers.ValidationError(
+                    "Cannot change language or difficulty after challenge starts"
+                )
+        return data
 
 

@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ce!s0jnf6%q!9y4l52lhncm=w)76m09#(h9d2831v$6@65oiui
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -41,11 +41,14 @@ INSTALLED_APPS = [
 
 EXTERNAL_APPS = [
     'rest_framework',
+    'corsheaders',
 ]
 
 CORE_APPS = [
     'apps.accounts',
     'apps.profiles',
+    'apps.challenges',
+    'apps.evaluator',
 ]
 
 INSTALLED_APPS += EXTERNAL_APPS + CORE_APPS
@@ -53,6 +56,7 @@ INSTALLED_APPS += EXTERNAL_APPS + CORE_APPS
 AUTH_USER_MODEL = 'accounts.User'
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -149,3 +153,23 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
     "AUTH_HEADER_TYPES": ("Bearer",),
 }
+
+
+#Email config
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+EMAIL_HOST_USER = "devathwani461@gmail.com"
+EMAIL_HOST_PASSWORD = "wczk wfai xmlx wywq"
+
+# Frontend config
+FRONTEND_URL = "http://localhost:5173"
+
+# CORS
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+]

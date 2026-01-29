@@ -5,9 +5,7 @@ class User(AbstractUser):
     user_id = models.AutoField(primary_key=True)
     email = models.EmailField(unique=True)
 
-    access_token = models.TextField(default='')    
     is_verified = models.BooleanField(default=False)
-
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -16,3 +14,7 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.email
+
+    @staticmethod
+    def get_user_by_email(email):
+        return User.objects.filter(email=email).first()
