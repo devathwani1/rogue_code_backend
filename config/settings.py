@@ -137,8 +137,9 @@ STATIC_URL = 'static/'
 # Rest Framework
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
-    )
+        "apps.accounts.auth.CustomJWTAuthentication",
+    ),
+    "EXCEPTION_HANDLER": "apps.common.exception_handler.custom_exception_handler",
 }
 
 
