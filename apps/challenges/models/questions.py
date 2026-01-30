@@ -14,7 +14,7 @@ class Question(models.Model):
     description = models.TextField()
     function_name = models.CharField(max_length=100)
     parameters = models.JSONField()
-    return_type = models.JSONField()
+    return_type = models.CharField(max_length=100)
     test_cases = models.JSONField()
 
     difficulty = models.CharField(
