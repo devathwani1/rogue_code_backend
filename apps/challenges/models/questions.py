@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 from django.utils.text import slugify
 
@@ -8,21 +9,19 @@ class Question(models.Model):
         MEDIUM = "medium", "Medium"
         HARD = "hard", "Hard"
 
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(unique=True, blank=True)
-
     description = models.TextField()
+    constraints = models.TextField(null=True, blank=True)
     function_name = models.CharField(max_length=100)
-    parameters = models.JSONField()
-    return_type = models.CharField(max_length=100)
-    test_cases = models.JSONField()
+    return_type = models.JSONField()
 
     difficulty = models.CharField(
         max_length=10,
         choices=Difficulty.choices,
     )
 
-    is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

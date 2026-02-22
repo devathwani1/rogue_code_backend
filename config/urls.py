@@ -22,4 +22,5 @@ urlpatterns = [
     path('accounts/', include('apps.accounts.urls')),
     path('challenges/', include('apps.challenges.urls')),
     path('profiles/', include('apps.profiles.urls')),
+    path('common/', include('apps.common.urls')),
 ]

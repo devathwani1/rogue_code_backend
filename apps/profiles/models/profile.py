@@ -3,12 +3,9 @@ from django.db import models
 from django.utils import timezone
 
 
-class Profile(models.Model):
+from apps.common.models import Difficulty
 
-    class Difficulty(models.TextChoices):
-        LOW = "low", "Low"
-        STANDARD = "standard", "Standard"
-        CRUSHING = "crushing", "Crushing"
+class Profile(models.Model):
 
     class Language(models.TextChoices):
         CPP = "cpp", "C++",
@@ -21,11 +18,12 @@ class Profile(models.Model):
         related_name="profile"
     )
 
-    difficulty = models.CharField(
-        max_length=10,
-        choices=Difficulty.choices,
+    difficulty = models.ForeignKey(
+        Difficulty,
+        on_delete=models.SET_NULL,
         null=True,
-        blank=True
+        blank=True,
+        related_name="profiles"
     )
 
     language = models.CharField(

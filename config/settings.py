@@ -49,6 +49,8 @@ CORE_APPS = [
     'apps.profiles',
     'apps.challenges',
     'apps.evaluator',
+    'apps.common',
+    'apps.compiler',
 ]
 
 INSTALLED_APPS += EXTERNAL_APPS + CORE_APPS

@@ -1,17 +1,21 @@
-from apps.challenges.models.questions import Question
+from apps.challenges.models import Question
 
 class QuestionService:
     @staticmethod
-    def list_active_questions():
-        return Question.objects.filter(is_active=True)
+    def list_questions():
+        return Question.objects.all()
 
     @staticmethod
-    def get_question_by_slug(slug):
+    def get_question_by_id(question_id):
         try:
-            return Question.objects.get(slug=slug, is_active=True)
+            return Question.objects.get(id=question_id)
         except Question.DoesNotExist:
             return None
 
     @staticmethod
     def create_question(data):
-        return Question.objects.create(**data)
+        # We handle creation via Serializer now for nested objects
+        from apps.challenges.serializers.questions import QuestionSerializer
+        serializer = QuestionSerializer(data=data)
+        serializer.is_valid(raise_exception=True)
+        return serializer.save()

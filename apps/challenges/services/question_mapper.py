@@ -1,2 +1,0 @@
-class QuestionMapper():
-    pass
