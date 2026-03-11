@@ -30,18 +30,19 @@ class CodeValidator(ast.NodeVisitor):
                 f"Function name must be '{self.question.function_name}'"
             )
 
-        expected_params = self.question.parameters
+        params_qs = self.question.parameters
+        expected_list = list(params_qs.order_by("order") if hasattr(params_qs, "order_by") else params_qs)
         actual_params = node.args.args
 
-        if len(actual_params) != len(expected_params):
+        if len(actual_params) != len(expected_list):
             raise ValueError(
-                f"Expected {len(expected_params)} parameters, got {len(actual_params)}"
+                f"Expected {len(expected_list)} parameters, got {len(actual_params)}"
             )
-
-        for actual, expected in zip(actual_params, expected_params):
-            if actual.arg != expected["name"]:
+        for actual, expected in zip(actual_params, expected_list):
+            exp_name = expected.name if hasattr(expected, "name") else expected.get("name")
+            if actual.arg != exp_name:
                 raise ValueError(
-                    f"Expected parameter '{expected['name']}', got '{actual.arg}'"
+                    f"Expected parameter '{exp_name}', got '{actual.arg}'"
                 )
 
         self.generic_visit(node)
@@ -55,7 +56,8 @@ class CodeValidator(ast.NodeVisitor):
 
         self.generic_visit(node)
 
-    def validate(self):
+    def validate(self, tree):
+        self.visit(tree)
         if not self.found_function:
             raise ValueError(
                 f"Function '{self.question.function_name}' not found"

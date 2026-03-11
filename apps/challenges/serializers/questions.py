@@ -30,8 +30,10 @@ class QuestionSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Type schema must be a dictionary.")
         
         kind = schema.get("kind")
-        if kind not in ["primitive", "array", "map"]:
-            raise serializers.ValidationError(f"Invalid kind: {kind}. Supported: primitive, array, map.")
+        if kind not in ["primitive", "array", "map", "linked_list", "tree", "graph"]:
+            raise serializers.ValidationError(
+                f"Invalid kind: {kind}. Supported: primitive, array, map, linked_list, tree, graph."
+            )
 
         if kind == "primitive":
             name = schema.get("name")
@@ -99,12 +101,40 @@ class QuestionSolveSerializer(serializers.ModelSerializer):
         return TestCaseSerializer(test_cases, many=True).data
 
     def get_starter_code(self, obj):
-        from apps.compiler.services.question_mapper import QuestionMapper
+        from apps.compiler.services.python_mapper import PythonMapper
+        from apps.compiler.services.java_mapper import JavaMapper
+        from apps.compiler.services.cpp_mapper import CppMapper
+
+        request = self.context.get('request')
+        language = "python"  # Default
+
+        if request and request.user.is_authenticated:
+            try:
+                language = request.user.profile.language or "python"
+            except Exception:
+                pass
+
         params = [
             {"name": p.name, "type_schema": p.type_schema} 
             for p in obj.parameters.all().order_by('order')
         ]
-        return QuestionMapper.generate_python_starter_code(
+
+        if language == "java":
+            return JavaMapper.generate_java_starter_code(
+                obj.function_name, 
+                params, 
+                obj.return_type
+            )
+        
+        elif language == "cpp":
+            return CppMapper.generate_cpp_starter_code(
+                obj.function_name,
+                params,
+                obj.return_type
+            )
+        
+        # Default to Python
+        return PythonMapper.generate_python_starter_code(
             obj.function_name, 
             params, 
             obj.return_type

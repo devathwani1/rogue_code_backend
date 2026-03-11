@@ -55,7 +55,7 @@ class QuestionSolveView(APIView):
                 )
             )
         
-        serializer = QuestionSolveSerializer(question)
+        serializer = QuestionSolveSerializer(question, context={'request': request})
         return Response(Utils.success_response_data(
             message="Question solving data retrieved successfully",
             data=serializer.data

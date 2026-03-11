@@ -1,0 +1,1622 @@
+[
+{
+  "model": "accounts.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$pxXONTtn3floGzqOQEwTzC$NDsV0GI6NKO9ZRqFG4mj8fbCkppsDhPpqw0UpfY2U2Y=",
+    "last_login": "2026-02-22T13:48:18.593Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": true,
+    "date_joined": "2026-01-30T06:06:02.969Z",
+    "email": "admin@gmail.com",
+    "is_verified": false,
+    "is_active": true,
+    "created_at": "2026-01-30T06:06:03.448Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 10,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$nG7VW3E5nMf0hWYKcw5YIg$63SzFa9IwccdimEruTgpMLEKlB4c2il39F+uZND4nYQ=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "devathwani01@gmail.com",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "date_joined": "2026-01-30T18:42:24.802Z",
+    "email": "devathwani01@gmail.com",
+    "is_verified": true,
+    "is_active": true,
+    "created_at": "2026-01-30T18:42:25.238Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 11,
+  "fields": {
+    "password": "",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "testplanuser",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "date_joined": "2026-02-22T14:25:48.532Z",
+    "email": "testplan@example.com",
+    "is_verified": false,
+    "is_active": true,
+    "created_at": "2026-02-22T14:25:48.532Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "profiles.profile",
+  "pk": 9,
+  "fields": {
+    "user": 10,
+    "difficulty": 2,
+    "language": "python",
+    "lives": 3,
+    "streak": 0,
+    "max_streak": 0,
+    "challenge_day": 1,
+    "is_rogue": false,
+    "joined_challenge_at": null,
+    "last_completed_at": null,
+    "xp": 0,
+    "level": 1
+  }
+},
+{
+  "model": "profiles.profile",
+  "pk": 10,
+  "fields": {
+    "user": 11,
+    "difficulty": 2,
+    "language": null,
+    "lives": 3,
+    "streak": 0,
+    "max_streak": 0,
+    "challenge_day": 1,
+    "is_rogue": false,
+    "joined_challenge_at": null,
+    "last_completed_at": null,
+    "xp": 0,
+    "level": 1
+  }
+},
+{
+  "model": "challenges.question",
+  "pk": "17bf2506-20a8-479d-bc80-fca2d1aa8324",
+  "fields": {
+    "title": "Frequency Sort",
+    "slug": "frequency-sort",
+    "description": "Given a string s, sort it in decreasing order based on the frequency of the characters. The frequency of a character is the number of times it appears in the string. Return the sorted string. If there are multiple answers, return any of them.",
+    "constraints": "1 <= s.length <= 5 * 10^5\ns consists of uppercase and lowercase English letters and digits.",
+    "function_name": "frequencySort",
+    "return_type": {
+      "kind": "primitive",
+      "name": "string"
+    },
+    "difficulty": "medium",
+    "created_at": "2026-02-22T14:01:42.453Z"
+  }
+},
+{
+  "model": "challenges.question",
+  "pk": "1882414b-fb02-4e4b-9746-4f605e8da41e",
+  "fields": {
+    "title": "Two Sum",
+    "slug": "two-sum",
+    "description": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.",
+    "constraints": "2 <= nums.length <= 10^4",
+    "function_name": "twoSum",
+    "return_type": {
+      "kind": "array",
+      "of": {
+        "kind": "primitive",
+        "name": "int"
+      }
+    },
+    "difficulty": "easy",
+    "created_at": "2026-02-21T17:57:27.665Z"
+  }
+},
+{
+  "model": "challenges.question",
+  "pk": "1c67d615-dafb-498b-8024-2527d111b6b9",
+  "fields": {
+    "title": "Longest Substring Without Repeating Characters",
+    "slug": "longest-substring-without-repeating-characters",
+    "description": "Given a string s, find the length of the longest substring without repeating characters.",
+    "constraints": "0 <= s.length <= 5 * 10^4\ns consists of English letters, digits, symbols and spaces.",
+    "function_name": "lengthOfLongestSubstring",
+    "return_type": {
+      "kind": "primitive",
+      "name": "int"
+    },
+    "difficulty": "medium",
+    "created_at": "2026-02-22T14:01:42.648Z"
+  }
+},
+{
+  "model": "challenges.question",
+  "pk": "1e9a42e9-3111-4f57-9779-86a6c1ca4928",
+  "fields": {
+    "title": "First Non-Repeating Character",
+    "slug": "first-non-repeating-character",
+    "description": "Given a string s, find the first non-repeating character in it and return its index. If it does not exist, return -1.",
+    "constraints": "1 <= s.length <= 10^5\ns consists of only lowercase English letters.",
+    "function_name": "firstUniqChar",
+    "return_type": {
+      "kind": "primitive",
+      "name": "int"
+    },
+    "difficulty": "easy",
+    "created_at": "2026-02-22T14:01:42.308Z"
+  }
+},
+{
+  "model": "challenges.question",
+  "pk": "23be46a2-43d0-4163-9f31-013fbc82106e",
+  "fields": {
+    "title": "Palindrome Number",
+    "slug": "palindrome-number",
+    "description": "Given an integer x, return true if x is a palindrome, and false otherwise.",
+    "constraints": "-231 <= x <= 231 - 1",
+    "function_name": "isPalindrome",
+    "return_type": {
+      "kind": "primitive",
+      "name": "bool"
+    },
+    "difficulty": "easy",
+    "created_at": "2026-02-21T18:24:38.160Z"
+  }
+},
+{
+  "model": "challenges.question",
+  "pk": "2cd753b9-5c57-479a-b68e-5c9cdfdc1471",
+  "fields": {
+    "title": "Subarray With Given Sum",
+    "slug": "subarray-with-given-sum",
+    "description": "Given an array of integers nums and an integer k, return the total number of subarrays whose sum equals to k.",
+    "constraints": "1 <= nums.length <= 2 * 10^4\n-1000 <= nums[i] <= 1000\n-10^7 <= k <= 10^7",
+    "function_name": "subarraySum",
+    "return_type": {
+      "kind": "primitive",
+      "name": "int"
+    },
+    "difficulty": "medium",
+    "created_at": "2026-02-22T14:01:42.713Z"
+  }
+},
+{
+  "model": "challenges.question",
+  "pk": "2d0d401c-3b03-4af2-9b7f-10f0128a0de8",
+  "fields": {
+    "title": "Two Sum Exists",
+    "slug": "two-sum-exists",
+    "description": "Given an array of integers nums and an integer target, return true if there are two numbers such that they add up to target, and false otherwise.",
+    "constraints": "2 <= nums.length <= 10^4\n-10^9 <= nums[i] <= 10^9\n-10^9 <= target <= 10^9",
+    "function_name": "twoSumExists",
+    "return_type": {
+      "kind": "primitive",
+      "name": "bool"
+    },
+    "difficulty": "easy",
+    "created_at": "2026-02-22T14:01:42.372Z"
+  }
+},
+{
+  "model": "challenges.question",
+  "pk": "838324bc-69e4-4f62-a64a-01d5fafccae9",
+  "fields": {
+    "title": "Product of Array Except Self",
+    "slug": "product-of-array-except-self",
+    "description": "Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i]. The algorithm should run in O(n) time and without using the division operation.",
+    "constraints": "2 <= nums.length <= 10^5\n-30 <= nums[i] <= 30\nThe product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.",
+    "function_name": "productExceptSelf",
+    "return_type": {
+      "kind": "array",
+      "of": {
+        "kind": "primitive",
+        "name": "int"
+      }
+    },
+    "difficulty": "medium",
+    "created_at": "2026-02-22T14:01:42.864Z"
+  }
+},
+{
+  "model": "challenges.question",
+  "pk": "8ba796aa-8d72-4de8-a5eb-95f8cbc55c96",
+  "fields": {
+    "title": "Group Anagrams",
+    "slug": "group-anagrams",
+    "description": "Given an array of strings strs, group the anagrams together. You can return the answer in any order. An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.",
+    "constraints": "1 <= strs.length <= 10^4\n0 <= strs[i].length <= 100\nstrs[i] consists of lowercase English letters.",
+    "function_name": "groupAnagrams",
+    "return_type": {
+      "kind": "array",
+      "of": {
+        "kind": "array",
+        "of": {
+          "kind": "primitive",
+          "name": "string"
+        }
+      }
+    },
+    "difficulty": "medium",
+    "created_at": "2026-02-22T14:01:42.792Z"
+  }
+},
+{
+  "model": "challenges.question",
+  "pk": "90b504eb-7248-486a-ab6a-33c28e4b6027",
+  "fields": {
+    "title": "Majority Element",
+    "slug": "majority-element",
+    "description": "Given an array nums of size n, return the majority element. The majority element is the element that appears more than floor(n / 2) times. You may assume that the majority element always exists in the array.",
+    "constraints": "n == nums.length\n1 <= n <= 5 * 10^4\n-10^9 <= nums[i] <= 10^9",
+    "function_name": "majorityElement",
+    "return_type": {
+      "kind": "primitive",
+      "name": "int"
+    },
+    "difficulty": "easy",
+    "created_at": "2026-02-22T14:01:42.517Z"
+  }
+},
+{
+  "model": "challenges.question",
+  "pk": "933fc9cc-4aaf-4de9-822b-31633d187786",
+  "fields": {
+    "title": "Count Even Numbers",
+    "slug": "count-even-numbers",
+    "description": "Given an array of integers nums, return the count of even numbers in the array.",
+    "constraints": "1 <= nums.length <= 10^4\n-10^9 <= nums[i] <= 10^9",
+    "function_name": "countEven",
+    "return_type": {
+      "kind": "primitive",
+      "name": "int"
+    },
+    "difficulty": "easy",
+    "created_at": "2026-02-22T14:01:42.187Z"
+  }
+},
+{
+  "model": "challenges.question",
+  "pk": "9dc50409-21f9-4285-aa25-5441e3589607",
+  "fields": {
+    "title": "Maximum Subarray Sum",
+    "slug": "maximum-subarray-sum",
+    "description": "Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.",
+    "constraints": "1 <= nums.length <= 10^5\n-10^4 <= nums[i] <= 10^4",
+    "function_name": "maxSubArray",
+    "return_type": {
+      "kind": "primitive",
+      "name": "int"
+    },
+    "difficulty": "medium",
+    "created_at": "2026-02-22T14:01:42.580Z"
+  }
+},
+{
+  "model": "challenges.question",
+  "pk": "c64302c1-f0e0-42b5-961f-f782930d9858",
+  "fields": {
+    "title": "Valid Palindrome",
+    "slug": "valid-palindrome",
+    "description": "A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers. Given a string s, return true if it is a palindrome, or false otherwise.",
+    "constraints": "1 <= s.length <= 2 * 10^5\ns consists only of printable ASCII characters.",
+    "function_name": "isPalindrome",
+    "return_type": {
+      "kind": "primitive",
+      "name": "bool"
+    },
+    "difficulty": "easy",
+    "created_at": "2026-02-22T14:01:42.249Z"
+  }
+},
+{
+  "model": "challenges.question",
+  "pk": "f6e54d55-8ac6-4681-9856-4f9c2965264c",
+  "fields": {
+    "title": "Longest Consecutive Sequence",
+    "slug": "longest-consecutive-sequence",
+    "description": "Given an unsorted array of integers nums, return the length of the longest consecutive elements sequence. You must write an algorithm that runs in O(n) time.",
+    "constraints": "0 <= nums.length <= 10^5\n-10^9 <= nums[i] <= 10^9",
+    "function_name": "longestConsecutive",
+    "return_type": {
+      "kind": "primitive",
+      "name": "int"
+    },
+    "difficulty": "hard",
+    "created_at": "2026-02-22T14:01:42.925Z"
+  }
+},
+{
+  "model": "challenges.questionparameter",
+  "pk": 1,
+  "fields": {
+    "question": "1882414b-fb02-4e4b-9746-4f605e8da41e",
+    "name": "nums",
+    "type_schema": {
+      "kind": "array",
+      "of": {
+        "kind": "primitive",
+        "name": "int"
+      }
+    },
+    "order": 1
+  }
+},
+{
+  "model": "challenges.questionparameter",
+  "pk": 2,
+  "fields": {
+    "question": "1882414b-fb02-4e4b-9746-4f605e8da41e",
+    "name": "target",
+    "type_schema": {
+      "kind": "primitive",
+      "name": "int"
+    },
+    "order": 2
+  }
+},
+{
+  "model": "challenges.questionparameter",
+  "pk": 3,
+  "fields": {
+    "question": "23be46a2-43d0-4163-9f31-013fbc82106e",
+    "name": "x",
+    "type_schema": {
+      "kind": "primitive",
+      "name": "int"
+    },
+    "order": 1
+  }
+},
+{
+  "model": "challenges.questionparameter",
+  "pk": 4,
+  "fields": {
+    "question": "933fc9cc-4aaf-4de9-822b-31633d187786",
+    "name": "nums",
+    "type_schema": {
+      "kind": "array",
+      "of": {
+        "kind": "primitive",
+        "name": "int"
+      }
+    },
+    "order": 1
+  }
+},
+{
+  "model": "challenges.questionparameter",
+  "pk": 5,
+  "fields": {
+    "question": "c64302c1-f0e0-42b5-961f-f782930d9858",
+    "name": "s",
+    "type_schema": {
+      "kind": "primitive",
+      "name": "string"
+    },
+    "order": 1
+  }
+},
+{
+  "model": "challenges.questionparameter",
+  "pk": 6,
+  "fields": {
+    "question": "1e9a42e9-3111-4f57-9779-86a6c1ca4928",
+    "name": "s",
+    "type_schema": {
+      "kind": "primitive",
+      "name": "string"
+    },
+    "order": 1
+  }
+},
+{
+  "model": "challenges.questionparameter",
+  "pk": 7,
+  "fields": {
+    "question": "2d0d401c-3b03-4af2-9b7f-10f0128a0de8",
+    "name": "nums",
+    "type_schema": {
+      "kind": "array",
+      "of": {
+        "kind": "primitive",
+        "name": "int"
+      }
+    },
+    "order": 1
+  }
+},
+{
+  "model": "challenges.questionparameter",
+  "pk": 8,
+  "fields": {
+    "question": "2d0d401c-3b03-4af2-9b7f-10f0128a0de8",
+    "name": "target",
+    "type_schema": {
+      "kind": "primitive",
+      "name": "int"
+    },
+    "order": 2
+  }
+},
+{
+  "model": "challenges.questionparameter",
+  "pk": 9,
+  "fields": {
+    "question": "17bf2506-20a8-479d-bc80-fca2d1aa8324",
+    "name": "s",
+    "type_schema": {
+      "kind": "primitive",
+      "name": "string"
+    },
+    "order": 1
+  }
+},
+{
+  "model": "challenges.questionparameter",
+  "pk": 10,
+  "fields": {
+    "question": "90b504eb-7248-486a-ab6a-33c28e4b6027",
+    "name": "nums",
+    "type_schema": {
+      "kind": "array",
+      "of": {
+        "kind": "primitive",
+        "name": "int"
+      }
+    },
+    "order": 1
+  }
+},
+{
+  "model": "challenges.questionparameter",
+  "pk": 11,
+  "fields": {
+    "question": "9dc50409-21f9-4285-aa25-5441e3589607",
+    "name": "nums",
+    "type_schema": {
+      "kind": "array",
+      "of": {
+        "kind": "primitive",
+        "name": "int"
+      }
+    },
+    "order": 1
+  }
+},
+{
+  "model": "challenges.questionparameter",
+  "pk": 12,
+  "fields": {
+    "question": "1c67d615-dafb-498b-8024-2527d111b6b9",
+    "name": "s",
+    "type_schema": {
+      "kind": "primitive",
+      "name": "string"
+    },
+    "order": 1
+  }
+},
+{
+  "model": "challenges.questionparameter",
+  "pk": 13,
+  "fields": {
+    "question": "2cd753b9-5c57-479a-b68e-5c9cdfdc1471",
+    "name": "nums",
+    "type_schema": {
+      "kind": "array",
+      "of": {
+        "kind": "primitive",
+        "name": "int"
+      }
+    },
+    "order": 1
+  }
+},
+{
+  "model": "challenges.questionparameter",
+  "pk": 14,
+  "fields": {
+    "question": "2cd753b9-5c57-479a-b68e-5c9cdfdc1471",
+    "name": "k",
+    "type_schema": {
+      "kind": "primitive",
+      "name": "int"
+    },
+    "order": 2
+  }
+},
+{
+  "model": "challenges.questionparameter",
+  "pk": 15,
+  "fields": {
+    "question": "8ba796aa-8d72-4de8-a5eb-95f8cbc55c96",
+    "name": "strs",
+    "type_schema": {
+      "kind": "array",
+      "of": {
+        "kind": "primitive",
+        "name": "string"
+      }
+    },
+    "order": 1
+  }
+},
+{
+  "model": "challenges.questionparameter",
+  "pk": 16,
+  "fields": {
+    "question": "838324bc-69e4-4f62-a64a-01d5fafccae9",
+    "name": "nums",
+    "type_schema": {
+      "kind": "array",
+      "of": {
+        "kind": "primitive",
+        "name": "int"
+      }
+    },
+    "order": 1
+  }
+},
+{
+  "model": "challenges.questionparameter",
+  "pk": 17,
+  "fields": {
+    "question": "f6e54d55-8ac6-4681-9856-4f9c2965264c",
+    "name": "nums",
+    "type_schema": {
+      "kind": "array",
+      "of": {
+        "kind": "primitive",
+        "name": "int"
+      }
+    },
+    "order": 1
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 1,
+  "fields": {
+    "question": "1882414b-fb02-4e4b-9746-4f605e8da41e",
+    "input_data": [
+      [
+        2,
+        7,
+        11,
+        15
+      ],
+      9
+    ],
+    "expected_output": [
+      0,
+      1
+    ],
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 2,
+  "fields": {
+    "question": "1882414b-fb02-4e4b-9746-4f605e8da41e",
+    "input_data": [
+      [
+        3,
+        2,
+        4
+      ],
+      6
+    ],
+    "expected_output": [
+      1,
+      2
+    ],
+    "is_hidden": true
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 3,
+  "fields": {
+    "question": "23be46a2-43d0-4163-9f31-013fbc82106e",
+    "input_data": [
+      121
+    ],
+    "expected_output": true,
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 4,
+  "fields": {
+    "question": "23be46a2-43d0-4163-9f31-013fbc82106e",
+    "input_data": [
+      -121
+    ],
+    "expected_output": false,
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 5,
+  "fields": {
+    "question": "933fc9cc-4aaf-4de9-822b-31633d187786",
+    "input_data": [
+      [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    ],
+    "expected_output": 2,
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 6,
+  "fields": {
+    "question": "933fc9cc-4aaf-4de9-822b-31633d187786",
+    "input_data": [
+      [
+        2,
+        4,
+        6,
+        8
+      ]
+    ],
+    "expected_output": 4,
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 7,
+  "fields": {
+    "question": "933fc9cc-4aaf-4de9-822b-31633d187786",
+    "input_data": [
+      [
+        1,
+        3,
+        5,
+        7
+      ]
+    ],
+    "expected_output": 0,
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 8,
+  "fields": {
+    "question": "c64302c1-f0e0-42b5-961f-f782930d9858",
+    "input_data": [
+      "A man, a plan, a canal: Panama"
+    ],
+    "expected_output": true,
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 9,
+  "fields": {
+    "question": "c64302c1-f0e0-42b5-961f-f782930d9858",
+    "input_data": [
+      "race a car"
+    ],
+    "expected_output": false,
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 10,
+  "fields": {
+    "question": "c64302c1-f0e0-42b5-961f-f782930d9858",
+    "input_data": [
+      " "
+    ],
+    "expected_output": true,
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 11,
+  "fields": {
+    "question": "1e9a42e9-3111-4f57-9779-86a6c1ca4928",
+    "input_data": [
+      "leetcode"
+    ],
+    "expected_output": 0,
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 12,
+  "fields": {
+    "question": "1e9a42e9-3111-4f57-9779-86a6c1ca4928",
+    "input_data": [
+      "loveleetcode"
+    ],
+    "expected_output": 2,
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 13,
+  "fields": {
+    "question": "1e9a42e9-3111-4f57-9779-86a6c1ca4928",
+    "input_data": [
+      "aabb"
+    ],
+    "expected_output": -1,
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 14,
+  "fields": {
+    "question": "2d0d401c-3b03-4af2-9b7f-10f0128a0de8",
+    "input_data": [
+      [
+        2,
+        7,
+        11,
+        15
+      ],
+      9
+    ],
+    "expected_output": true,
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 15,
+  "fields": {
+    "question": "2d0d401c-3b03-4af2-9b7f-10f0128a0de8",
+    "input_data": [
+      [
+        3,
+        2,
+        4
+      ],
+      6
+    ],
+    "expected_output": true,
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 16,
+  "fields": {
+    "question": "2d0d401c-3b03-4af2-9b7f-10f0128a0de8",
+    "input_data": [
+      [
+        3,
+        3
+      ],
+      7
+    ],
+    "expected_output": false,
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 17,
+  "fields": {
+    "question": "17bf2506-20a8-479d-bc80-fca2d1aa8324",
+    "input_data": [
+      "tree"
+    ],
+    "expected_output": "eert",
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 18,
+  "fields": {
+    "question": "17bf2506-20a8-479d-bc80-fca2d1aa8324",
+    "input_data": [
+      "cccaaa"
+    ],
+    "expected_output": "cccaaa",
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 19,
+  "fields": {
+    "question": "17bf2506-20a8-479d-bc80-fca2d1aa8324",
+    "input_data": [
+      "Aabb"
+    ],
+    "expected_output": "bbAa",
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 20,
+  "fields": {
+    "question": "90b504eb-7248-486a-ab6a-33c28e4b6027",
+    "input_data": [
+      [
+        3,
+        2,
+        3
+      ]
+    ],
+    "expected_output": 3,
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 21,
+  "fields": {
+    "question": "90b504eb-7248-486a-ab6a-33c28e4b6027",
+    "input_data": [
+      [
+        2,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2
+      ]
+    ],
+    "expected_output": 2,
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 22,
+  "fields": {
+    "question": "90b504eb-7248-486a-ab6a-33c28e4b6027",
+    "input_data": [
+      [
+        1
+      ]
+    ],
+    "expected_output": 1,
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 23,
+  "fields": {
+    "question": "9dc50409-21f9-4285-aa25-5441e3589607",
+    "input_data": [
+      [
+        -2,
+        1,
+        -3,
+        4,
+        -1,
+        2,
+        1,
+        -5,
+        4
+      ]
+    ],
+    "expected_output": 6,
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 24,
+  "fields": {
+    "question": "9dc50409-21f9-4285-aa25-5441e3589607",
+    "input_data": [
+      [
+        1
+      ]
+    ],
+    "expected_output": 1,
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 25,
+  "fields": {
+    "question": "9dc50409-21f9-4285-aa25-5441e3589607",
+    "input_data": [
+      [
+        5,
+        4,
+        -1,
+        7,
+        8
+      ]
+    ],
+    "expected_output": 23,
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 26,
+  "fields": {
+    "question": "1c67d615-dafb-498b-8024-2527d111b6b9",
+    "input_data": [
+      "abcabcbb"
+    ],
+    "expected_output": 3,
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 27,
+  "fields": {
+    "question": "1c67d615-dafb-498b-8024-2527d111b6b9",
+    "input_data": [
+      "bbbbb"
+    ],
+    "expected_output": 1,
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 28,
+  "fields": {
+    "question": "1c67d615-dafb-498b-8024-2527d111b6b9",
+    "input_data": [
+      "pwwkew"
+    ],
+    "expected_output": 3,
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 29,
+  "fields": {
+    "question": "2cd753b9-5c57-479a-b68e-5c9cdfdc1471",
+    "input_data": [
+      [
+        1,
+        1,
+        1
+      ],
+      2
+    ],
+    "expected_output": 2,
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 30,
+  "fields": {
+    "question": "2cd753b9-5c57-479a-b68e-5c9cdfdc1471",
+    "input_data": [
+      [
+        1,
+        2,
+        3
+      ],
+      3
+    ],
+    "expected_output": 2,
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 31,
+  "fields": {
+    "question": "2cd753b9-5c57-479a-b68e-5c9cdfdc1471",
+    "input_data": [
+      [
+        1
+      ],
+      0
+    ],
+    "expected_output": 0,
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 32,
+  "fields": {
+    "question": "8ba796aa-8d72-4de8-a5eb-95f8cbc55c96",
+    "input_data": [
+      [
+        "eat",
+        "tea",
+        "tan",
+        "ate",
+        "nat",
+        "bat"
+      ]
+    ],
+    "expected_output": [
+      [
+        "bat"
+      ],
+      [
+        "nat",
+        "tan"
+      ],
+      [
+        "ate",
+        "eat",
+        "tea"
+      ]
+    ],
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 33,
+  "fields": {
+    "question": "8ba796aa-8d72-4de8-a5eb-95f8cbc55c96",
+    "input_data": [
+      [
+        ""
+      ]
+    ],
+    "expected_output": [
+      [
+        ""
+      ]
+    ],
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 34,
+  "fields": {
+    "question": "8ba796aa-8d72-4de8-a5eb-95f8cbc55c96",
+    "input_data": [
+      [
+        "a"
+      ]
+    ],
+    "expected_output": [
+      [
+        "a"
+      ]
+    ],
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 35,
+  "fields": {
+    "question": "838324bc-69e4-4f62-a64a-01d5fafccae9",
+    "input_data": [
+      [
+        1,
+        2,
+        3,
+        4
+      ]
+    ],
+    "expected_output": [
+      24,
+      12,
+      8,
+      6
+    ],
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 36,
+  "fields": {
+    "question": "838324bc-69e4-4f62-a64a-01d5fafccae9",
+    "input_data": [
+      [
+        -1,
+        1,
+        0,
+        -3,
+        3
+      ]
+    ],
+    "expected_output": [
+      0,
+      0,
+      9,
+      0,
+      0
+    ],
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 37,
+  "fields": {
+    "question": "838324bc-69e4-4f62-a64a-01d5fafccae9",
+    "input_data": [
+      [
+        1,
+        1
+      ]
+    ],
+    "expected_output": [
+      1,
+      1
+    ],
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 38,
+  "fields": {
+    "question": "f6e54d55-8ac6-4681-9856-4f9c2965264c",
+    "input_data": [
+      [
+        100,
+        4,
+        200,
+        1,
+        3,
+        2
+      ]
+    ],
+    "expected_output": 4,
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 39,
+  "fields": {
+    "question": "f6e54d55-8ac6-4681-9856-4f9c2965264c",
+    "input_data": [
+      [
+        0,
+        3,
+        7,
+        2,
+        5,
+        8,
+        4,
+        6,
+        0,
+        1
+      ]
+    ],
+    "expected_output": 9,
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.testcase",
+  "pk": 40,
+  "fields": {
+    "question": "f6e54d55-8ac6-4681-9856-4f9c2965264c",
+    "input_data": [
+      []
+    ],
+    "expected_output": 0,
+    "is_hidden": false
+  }
+},
+{
+  "model": "challenges.questionplan",
+  "pk": 4,
+  "fields": {
+    "difficulty": 1,
+    "version": 1,
+    "is_active": true,
+    "created_at": "2026-02-22T14:31:23.687Z"
+  }
+},
+{
+  "model": "challenges.questionplan",
+  "pk": 5,
+  "fields": {
+    "difficulty": 2,
+    "version": 1,
+    "is_active": true,
+    "created_at": "2026-02-22T14:31:23.700Z"
+  }
+},
+{
+  "model": "challenges.questionplan",
+  "pk": 6,
+  "fields": {
+    "difficulty": 3,
+    "version": 1,
+    "is_active": true,
+    "created_at": "2026-02-22T14:31:23.713Z"
+  }
+},
+{
+  "model": "challenges.dailyplan",
+  "pk": "14122a27-8bfb-4dc2-aa39-42f9b42da25c",
+  "fields": {
+    "question_plan": 4,
+    "day_number": 3
+  }
+},
+{
+  "model": "challenges.dailyplan",
+  "pk": "16da000c-a286-46ea-a5f2-413bba386629",
+  "fields": {
+    "question_plan": 6,
+    "day_number": 2
+  }
+},
+{
+  "model": "challenges.dailyplan",
+  "pk": "3880fb2a-8532-43cb-a077-6c3960ba9372",
+  "fields": {
+    "question_plan": 5,
+    "day_number": 2
+  }
+},
+{
+  "model": "challenges.dailyplan",
+  "pk": "6cc6a479-f5bb-4751-936d-037b6c98772f",
+  "fields": {
+    "question_plan": 5,
+    "day_number": 3
+  }
+},
+{
+  "model": "challenges.dailyplan",
+  "pk": "74bb332d-73d5-49e3-b98e-f12624973b2e",
+  "fields": {
+    "question_plan": 6,
+    "day_number": 4
+  }
+},
+{
+  "model": "challenges.dailyplan",
+  "pk": "81fc35ae-6b1f-4bec-bf2d-bf2cf5a34c59",
+  "fields": {
+    "question_plan": 5,
+    "day_number": 1
+  }
+},
+{
+  "model": "challenges.dailyplan",
+  "pk": "821b8e95-27da-4c44-8a19-730eaa1abb1d",
+  "fields": {
+    "question_plan": 4,
+    "day_number": 1
+  }
+},
+{
+  "model": "challenges.dailyplan",
+  "pk": "a180821f-c6fa-49cf-ae7a-4140c2774eac",
+  "fields": {
+    "question_plan": 4,
+    "day_number": 2
+  }
+},
+{
+  "model": "challenges.dailyplan",
+  "pk": "a7c03e19-1b2d-49b2-a79a-d8b367a9586b",
+  "fields": {
+    "question_plan": 6,
+    "day_number": 3
+  }
+},
+{
+  "model": "challenges.dailyplan",
+  "pk": "b7f6d5ea-ebf8-47d4-94a2-4b31cf5f7f52",
+  "fields": {
+    "question_plan": 4,
+    "day_number": 4
+  }
+},
+{
+  "model": "challenges.dailyplan",
+  "pk": "ccd6ab10-4ce1-4ccd-a98f-779b90462b7f",
+  "fields": {
+    "question_plan": 5,
+    "day_number": 4
+  }
+},
+{
+  "model": "challenges.dailyplan",
+  "pk": "ee2e1912-69dc-404a-a870-6c0dc9e55cd0",
+  "fields": {
+    "question_plan": 6,
+    "day_number": 1
+  }
+},
+{
+  "model": "challenges.dailyplanitem",
+  "pk": 25,
+  "fields": {
+    "daily_plan": "821b8e95-27da-4c44-8a19-730eaa1abb1d",
+    "question": "933fc9cc-4aaf-4de9-822b-31633d187786",
+    "order": 1
+  }
+},
+{
+  "model": "challenges.dailyplanitem",
+  "pk": 26,
+  "fields": {
+    "daily_plan": "81fc35ae-6b1f-4bec-bf2d-bf2cf5a34c59",
+    "question": "933fc9cc-4aaf-4de9-822b-31633d187786",
+    "order": 1
+  }
+},
+{
+  "model": "challenges.dailyplanitem",
+  "pk": 27,
+  "fields": {
+    "daily_plan": "81fc35ae-6b1f-4bec-bf2d-bf2cf5a34c59",
+    "question": "c64302c1-f0e0-42b5-961f-f782930d9858",
+    "order": 2
+  }
+},
+{
+  "model": "challenges.dailyplanitem",
+  "pk": 28,
+  "fields": {
+    "daily_plan": "ee2e1912-69dc-404a-a870-6c0dc9e55cd0",
+    "question": "933fc9cc-4aaf-4de9-822b-31633d187786",
+    "order": 1
+  }
+},
+{
+  "model": "challenges.dailyplanitem",
+  "pk": 29,
+  "fields": {
+    "daily_plan": "ee2e1912-69dc-404a-a870-6c0dc9e55cd0",
+    "question": "c64302c1-f0e0-42b5-961f-f782930d9858",
+    "order": 2
+  }
+},
+{
+  "model": "challenges.dailyplanitem",
+  "pk": 30,
+  "fields": {
+    "daily_plan": "ee2e1912-69dc-404a-a870-6c0dc9e55cd0",
+    "question": "1e9a42e9-3111-4f57-9779-86a6c1ca4928",
+    "order": 3
+  }
+},
+{
+  "model": "challenges.dailyplanitem",
+  "pk": 31,
+  "fields": {
+    "daily_plan": "a180821f-c6fa-49cf-ae7a-4140c2774eac",
+    "question": "2d0d401c-3b03-4af2-9b7f-10f0128a0de8",
+    "order": 1
+  }
+},
+{
+  "model": "challenges.dailyplanitem",
+  "pk": 32,
+  "fields": {
+    "daily_plan": "3880fb2a-8532-43cb-a077-6c3960ba9372",
+    "question": "2d0d401c-3b03-4af2-9b7f-10f0128a0de8",
+    "order": 1
+  }
+},
+{
+  "model": "challenges.dailyplanitem",
+  "pk": 33,
+  "fields": {
+    "daily_plan": "3880fb2a-8532-43cb-a077-6c3960ba9372",
+    "question": "17bf2506-20a8-479d-bc80-fca2d1aa8324",
+    "order": 2
+  }
+},
+{
+  "model": "challenges.dailyplanitem",
+  "pk": 34,
+  "fields": {
+    "daily_plan": "16da000c-a286-46ea-a5f2-413bba386629",
+    "question": "2d0d401c-3b03-4af2-9b7f-10f0128a0de8",
+    "order": 1
+  }
+},
+{
+  "model": "challenges.dailyplanitem",
+  "pk": 35,
+  "fields": {
+    "daily_plan": "16da000c-a286-46ea-a5f2-413bba386629",
+    "question": "17bf2506-20a8-479d-bc80-fca2d1aa8324",
+    "order": 2
+  }
+},
+{
+  "model": "challenges.dailyplanitem",
+  "pk": 36,
+  "fields": {
+    "daily_plan": "16da000c-a286-46ea-a5f2-413bba386629",
+    "question": "90b504eb-7248-486a-ab6a-33c28e4b6027",
+    "order": 3
+  }
+},
+{
+  "model": "challenges.dailyplanitem",
+  "pk": 37,
+  "fields": {
+    "daily_plan": "14122a27-8bfb-4dc2-aa39-42f9b42da25c",
+    "question": "9dc50409-21f9-4285-aa25-5441e3589607",
+    "order": 1
+  }
+},
+{
+  "model": "challenges.dailyplanitem",
+  "pk": 38,
+  "fields": {
+    "daily_plan": "6cc6a479-f5bb-4751-936d-037b6c98772f",
+    "question": "9dc50409-21f9-4285-aa25-5441e3589607",
+    "order": 1
+  }
+},
+{
+  "model": "challenges.dailyplanitem",
+  "pk": 39,
+  "fields": {
+    "daily_plan": "6cc6a479-f5bb-4751-936d-037b6c98772f",
+    "question": "1c67d615-dafb-498b-8024-2527d111b6b9",
+    "order": 2
+  }
+},
+{
+  "model": "challenges.dailyplanitem",
+  "pk": 40,
+  "fields": {
+    "daily_plan": "a7c03e19-1b2d-49b2-a79a-d8b367a9586b",
+    "question": "9dc50409-21f9-4285-aa25-5441e3589607",
+    "order": 1
+  }
+},
+{
+  "model": "challenges.dailyplanitem",
+  "pk": 41,
+  "fields": {
+    "daily_plan": "a7c03e19-1b2d-49b2-a79a-d8b367a9586b",
+    "question": "1c67d615-dafb-498b-8024-2527d111b6b9",
+    "order": 2
+  }
+},
+{
+  "model": "challenges.dailyplanitem",
+  "pk": 42,
+  "fields": {
+    "daily_plan": "a7c03e19-1b2d-49b2-a79a-d8b367a9586b",
+    "question": "2cd753b9-5c57-479a-b68e-5c9cdfdc1471",
+    "order": 3
+  }
+},
+{
+  "model": "challenges.dailyplanitem",
+  "pk": 43,
+  "fields": {
+    "daily_plan": "b7f6d5ea-ebf8-47d4-94a2-4b31cf5f7f52",
+    "question": "8ba796aa-8d72-4de8-a5eb-95f8cbc55c96",
+    "order": 1
+  }
+},
+{
+  "model": "challenges.dailyplanitem",
+  "pk": 44,
+  "fields": {
+    "daily_plan": "ccd6ab10-4ce1-4ccd-a98f-779b90462b7f",
+    "question": "8ba796aa-8d72-4de8-a5eb-95f8cbc55c96",
+    "order": 1
+  }
+},
+{
+  "model": "challenges.dailyplanitem",
+  "pk": 45,
+  "fields": {
+    "daily_plan": "ccd6ab10-4ce1-4ccd-a98f-779b90462b7f",
+    "question": "838324bc-69e4-4f62-a64a-01d5fafccae9",
+    "order": 2
+  }
+},
+{
+  "model": "challenges.dailyplanitem",
+  "pk": 46,
+  "fields": {
+    "daily_plan": "74bb332d-73d5-49e3-b98e-f12624973b2e",
+    "question": "8ba796aa-8d72-4de8-a5eb-95f8cbc55c96",
+    "order": 1
+  }
+},
+{
+  "model": "challenges.dailyplanitem",
+  "pk": 47,
+  "fields": {
+    "daily_plan": "74bb332d-73d5-49e3-b98e-f12624973b2e",
+    "question": "838324bc-69e4-4f62-a64a-01d5fafccae9",
+    "order": 2
+  }
+},
+{
+  "model": "challenges.dailyplanitem",
+  "pk": 48,
+  "fields": {
+    "daily_plan": "74bb332d-73d5-49e3-b98e-f12624973b2e",
+    "question": "f6e54d55-8ac6-4681-9856-4f9c2965264c",
+    "order": 3
+  }
+},
+{
+  "model": "common.difficulty",
+  "pk": 1,
+  "fields": {
+    "name": "Low",
+    "mode_name": "Easy",
+    "logo": "<svg width=\"360\" height=\"240\" viewBox=\"0 0 360 240\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\r\n<path d=\"M183.043 20.0391C245.581 20.0391 296.428 68.6079 296.428 128.701C296.428 188.795 245.581 237.364 183.043 237.364C120.504 237.364 69.657 188.795 69.657 128.701C69.6573 68.6079 120.504 20.0391 183.043 20.0391Z\" fill=\"#8894A5\" stroke=\"black\" stroke-width=\"4\"/>\r\n<path d=\"M179.894 32.6338C234.176 32.634 278.323 74.8622 278.323 127.127C278.323 179.392 234.176 221.62 179.894 221.62C125.613 221.62 81.4646 179.392 81.4646 127.127C81.4647 74.8621 125.613 32.6338 179.894 32.6338Z\" fill=\"#8894A5\" stroke=\"black\" stroke-width=\"4\"/>\r\n<circle cx=\"181.075\" cy=\"127.521\" r=\"85.4408\" fill=\"#37332B\" stroke=\"black\" stroke-width=\"4\"/>\r\n<path d=\"M347.021 111.079L319.689 116.156C314.881 117.304 309.733 118.387 303.83 119.552C304.562 130.612 304.636 136.885 301.724 148.717L325.362 148.392C337.223 134.408 340.832 126.043 347.021 111.079Z\" fill=\"#599C92\"/>\r\n<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M233.681 233.104L230.671 228.677C252.835 215.414 263.758 206.059 280.086 185.351C290.182 168.785 292.708 161.185 295.027 148.809C296.349 137.653 296.987 129.017 296.841 120.908C296.678 111.824 295.53 103.401 293.257 92.8353L297.765 91.7556C301.499 102.216 303.063 108.233 303.83 119.552C304.562 130.612 304.636 136.885 301.724 148.717L325.362 148.392L329.695 148.333L311.145 174.522C304.643 185.098 299.385 187.679 286.774 185.563L285.519 187.886C266.307 213.644 254.812 222.409 233.681 233.104Z\" fill=\"#2F5C55\"/>\r\n<path d=\"M347.134 107.538C354.072 95.2198 355.938 88.7148 357.142 77.5337L297.765 91.7556C301.499 102.216 303.063 108.233 303.83 119.552C309.733 118.387 314.881 117.304 319.689 116.156C329.101 113.909 337.21 111.409 347.134 107.538Z\" fill=\"#2F5C55\"/>\r\n<path d=\"M280.086 185.351C263.758 206.059 252.835 215.414 230.671 228.677L233.681 233.104C254.812 222.409 266.307 213.644 285.519 187.886L286.774 185.563M280.086 185.351L286.774 185.563M280.086 185.351C290.182 168.785 292.708 161.185 295.027 148.809M286.774 185.563C299.385 187.679 304.643 185.098 311.145 174.522L329.695 148.333L325.362 148.392M295.027 148.809C296.349 137.653 296.987 129.017 296.841 120.908M295.027 148.809L301.724 148.717M296.841 120.908C296.678 111.824 295.53 103.401 293.257 92.8353L297.765 91.7556M296.841 120.908C299.292 120.439 301.614 119.99 303.83 119.552M319.689 116.156C329.101 113.909 337.21 111.409 347.134 107.538C354.072 95.2198 355.938 88.7148 357.142 77.5337L297.765 91.7556M319.689 116.156L347.021 111.079C340.832 126.043 337.223 134.408 325.362 148.392M319.689 116.156C314.881 117.304 309.733 118.387 303.83 119.552M325.362 148.392L301.724 148.717M301.724 148.717C299.377 160.292 297.212 166.757 290.551 178.201M301.724 148.717C304.636 136.885 304.562 130.612 303.83 119.552M303.83 119.552C303.063 108.233 301.499 102.216 297.765 91.7556\" stroke=\"black\" stroke-width=\"4\"/>\r\n<path d=\"M25.0771 84.4735C20.1461 71.2235 19.3177 64.5069 19.8736 53.275L76.3036 76.5881C70.9828 86.338 68.499 92.0371 65.9755 103.098C60.3265 101.025 55.4105 99.1531 50.8405 97.2688C41.8948 93.5802 34.2747 89.8457 25.0771 84.4735Z\" fill=\"#2F5C55\"/>\r\n<path d=\"M79.1608 171.796L72.522 170.962C59.7352 171.083 54.9445 167.714 50.1725 156.253L35.936 127.49L40.2071 128.225L63.5044 132.234L70.1053 133.37C70.4646 145.956 71.7739 153.857 79.1608 171.796Z\" fill=\"#2F5C55\"/>\r\n<path d=\"M121.21 222.302L117.546 226.205C98.3424 212.344 88.3565 201.892 73.3991 173.452L72.522 170.962L79.1608 171.796C92.0572 194.798 101.387 205.743 121.21 222.302Z\" fill=\"#2F5C55\"/>\r\n<path d=\"M72.6673 105.527C71.2576 113.515 70.5404 122.144 70.1053 133.37L63.5044 132.234C62.4746 120.093 63.5268 113.908 65.9755 103.098C68.0959 103.876 70.3197 104.682 72.6673 105.527Z\" fill=\"#2F5C55\"/>\r\n<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M24.6355 87.9882C28.4136 103.735 30.6735 112.561 40.2071 128.225L63.5044 132.234C62.4746 120.093 63.5268 113.908 65.9755 103.098C60.3265 101.025 55.4105 99.1531 50.8405 97.2688L24.6355 87.9882Z\" fill=\"#599C92\"/>\r\n<path d=\"M80.5879 78.3581C76.6944 88.4392 74.2464 96.5802 72.6673 105.527C70.3197 104.682 68.0959 103.876 65.9755 103.098C68.499 92.0371 70.9828 86.338 76.3036 76.5881L80.5879 78.3581Z\" fill=\"#2F5C55\"/>\r\n<path d=\"M79.1608 171.796C92.0572 194.798 101.387 205.743 121.21 222.302L117.546 226.205C98.3424 212.344 88.3565 201.892 73.3991 173.452L72.522 170.962M79.1608 171.796L72.522 170.962M79.1608 171.796C71.7739 153.857 70.4646 145.956 70.1053 133.37M72.522 170.962C59.7352 171.083 54.9445 167.714 50.1725 156.253L35.936 127.49L40.2071 128.225M70.1053 133.37C70.5404 122.144 71.2576 113.515 72.6673 105.527M70.1053 133.37L63.5044 132.234M72.6673 105.527C74.2464 96.5802 76.6944 88.4392 80.5879 78.3581L76.3036 76.5881M72.6673 105.527C70.3197 104.682 68.096 103.876 65.9755 103.098M50.8405 97.2688C41.8948 93.5802 34.2747 89.8457 25.0771 84.4735C20.1461 71.2235 19.3177 64.5069 19.8736 53.275L76.3036 76.5881M50.8405 97.2688L24.6355 87.9882C28.4136 103.735 30.6735 112.561 40.2071 128.225M50.8405 97.2688C55.4105 99.1531 60.3265 101.025 65.9755 103.098M40.2071 128.225L63.5044 132.234M63.5044 132.234C64.0163 144.033 65.1464 150.757 69.9397 163.101M63.5044 132.234C62.4746 120.093 63.5268 113.908 65.9755 103.098M65.9755 103.098C68.499 92.0371 70.9828 86.338 76.3036 76.5881\" stroke=\"black\" stroke-width=\"4\"/>\r\n<path d=\"M179.894 65.1953C213.663 65.1953 241.038 92.5706 241.038 126.34C241.038 160.109 213.663 187.484 179.894 187.484C157.348 187.484 137.654 175.281 127.056 157.13C121.774 148.085 118.749 137.562 118.749 126.34C118.749 92.5707 146.125 65.1954 179.894 65.1953Z\" fill=\"#F4F0FF\" stroke=\"black\" stroke-width=\"5\"/>\r\n<path d=\"M168.926 93.1913C197.028 83.2757 223.612 77.2742 243.912 75.6243C254.042 74.8009 262.754 75.0481 269.353 76.5154C275.802 77.9492 281.041 80.7451 282.797 85.7211C284.552 90.6971 282.228 96.161 278.107 101.324C273.89 106.608 267.263 112.268 258.858 117.985C242.018 129.439 217.554 141.45 189.452 151.366C161.35 161.281 134.766 167.282 114.467 168.932C104.336 169.756 95.6235 169.508 89.0241 168.041C82.576 166.607 77.3377 163.811 75.582 158.835C73.8263 153.859 76.1499 148.395 80.2706 143.232C84.4878 137.948 91.116 132.288 99.5203 126.572C116.36 115.117 140.824 103.107 168.926 93.1913Z\" fill=\"#5691DF\" stroke=\"black\" stroke-width=\"5\"/>\r\n<path d=\"M172.963 102.721C194.327 95.1831 214.4 90.2056 229.611 88.2768C237.196 87.3151 243.709 87.0927 248.616 87.7523C251.066 88.0817 253.256 88.6484 255.011 89.5491C256.781 90.4572 258.291 91.806 258.975 93.7457C259.659 95.6852 259.33 97.6822 258.522 99.4997C257.721 101.303 256.372 103.118 254.671 104.912C251.264 108.505 246.054 112.419 239.545 116.43C226.491 124.474 207.74 133.196 186.376 140.734C165.011 148.272 144.939 153.25 129.727 155.179C122.142 156.14 115.629 156.363 110.721 155.703C108.272 155.374 106.083 154.807 104.327 153.906C102.558 152.998 101.048 151.65 100.364 149.711C99.6793 147.771 100.008 145.773 100.816 143.956C101.618 142.153 102.966 140.338 104.667 138.544C108.074 134.951 113.285 131.036 119.794 127.025C132.847 118.981 151.599 110.26 172.963 102.721Z\" fill=\"black\" stroke=\"black\" stroke-width=\"5\"/>\r\n<path d=\"M176.703 65.2058C206.615 64.1214 233.024 86.7874 239.402 114.764L239.823 116.614L238.156 117.518C196.23 140.238 162.443 150.419 127.121 155.578L125.378 155.833L124.552 154.277C120.333 146.334 118.159 138.048 117.813 128.525C116.59 94.7785 142.956 66.4294 176.703 65.2058Z\" fill=\"#F4F0FF\" stroke=\"black\" stroke-width=\"5\"/>\r\n<path d=\"M174.754 51.5581C168.741 35.9423 163.334 30.5908 151.925 24.0069C164.136 19.2604 169.325 14.7914 175.934 3.93384C182.706 15.7686 189.054 19.3352 203.092 22.4325C190.74 30.1475 185.724 36.342 181.051 51.5581H174.754Z\" fill=\"#4B5F81\" stroke=\"black\" stroke-width=\"4\"/>\r\n</svg>",
+    "days": 90,
+    "number_of_questions": 90
+  }
+},
+{
+  "model": "common.difficulty",
+  "pk": 2,
+  "fields": {
+    "name": "Standard",
+    "mode_name": "Normal",
+    "logo": "<svg width=\"354\" height=\"265\" viewBox=\"0 0 354 265\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\r\n<path d=\"M84.3225 57.5957L105.97 72.9457L177.997 43.4265\" stroke=\"black\"/>\r\n<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M290.563 54.0535C312.503 39.9631 325.725 33.4161 349.601 22.1728C347.982 49.8109 344.933 65.2237 337.4 92.6252C344.028 91.2034 347.419 91.1602 353.143 91.838C343.595 113.267 338.375 125.323 324.411 145.366L316.933 150.876C310.429 164.308 305.92 170.877 298.434 179.608L289.382 182.363C284.167 192.532 280.922 198.276 273.638 208.734C268.983 213.957 258.101 220.71 255.927 219.754C255.927 219.754 246.743 221.329 243.332 222.116L230.737 240.615L216.568 244.944C202.294 253.955 194.246 258.619 179.571 264.23L129.191 239.827C125.011 235.243 123 230.719 119.49 222.822L119.351 222.51C107.803 221.193 101.608 219.68 91.4067 214.638C80.7341 204.3 76.7918 196.568 69.3657 183.151L56.7709 178.821L40.6337 150.876L31.5812 146.547L0.881226 92.6252L19.7735 93.4124C13.3388 65.6329 10.5821 49.9302 6.78506 21.7792L65.4298 53.2663V43.4266C109.051 24.8789 133.544 14.8191 177.603 0.525391C221.975 14.7966 246.743 23.5226 290.563 41.4586V54.0535ZM233.099 210.308C226.539 215.031 206.65 228.807 179.571 246.125L180.751 259.9C188.103 256.561 192.205 254.486 199.25 248.093L205.154 233.136L202.792 248.093L216.568 240.615L221.685 222.116L219.717 240.615C224.472 239.486 227.034 238.652 230.737 235.498C234.423 229.471 236.366 226.06 239.003 219.754L233.099 210.308ZM178.39 259.9V246.125L128.404 213.457L123.681 222.51L130.766 236.679L148.477 243.37L147.69 231.168L152.807 245.731L178.39 259.9ZM120.532 217.786L125.255 210.308L71.7272 159.929C78.9745 170.21 82.5376 176.287 93.3746 184.331C97.2627 190.947 99.3401 194.777 104.002 200.469C109.512 208.853 112.917 213.014 120.532 217.786ZM94.949 212.276C101.655 215.333 105.856 216.453 113.841 217.786L89.4387 188.267L75.2695 185.512C81.759 196.853 86.0078 202.767 94.949 212.276ZM65.4298 156.78L84.7157 181.97L59.1324 174.885L46.1439 152.451L65.4298 156.78ZM65.4298 147.728L59.1324 114.273L62.2811 149.696L33.9427 142.611L8.35941 96.5611L36.8946 103.055L65.4298 109.55C69.5966 113.449 70.3694 116.005 71.7272 120.57L75.2695 156.78L65.4298 147.728ZM62.2811 99.3162L70.1529 102.071L65.4298 59.1701L11.1145 29.2574L23.3158 92.6252H26.4645V82.7855L30.4004 92.6252L57.9516 97.7419L55.5901 67.8291L62.2811 99.3162ZM241.758 215.819L235.46 207.553L287.414 157.961L287.192 158.281C280.275 168.249 276.328 173.936 264.979 182.363V186.693L241.758 215.819ZM259.863 201.649C254.764 207.766 251.28 210.93 243.332 215.819C253.642 214.519 259.903 214.973 267.734 207.553C274.951 199.845 278.737 195.295 282.691 184.725L270.096 186.693L259.863 201.649ZM292.924 156.387C286.161 166.859 281.016 172.442 271.67 182.363C281.543 180.8 287.117 179.623 297.254 176.066C304.88 167.417 307.733 162.203 311.029 152.451C303.835 151.931 299.869 152.752 292.924 156.387ZM291.743 149.696L282.691 154.419L288.201 117.815C289.273 113.655 290.709 111.781 295.286 109.55C314.537 101.964 326.513 99.9185 348.027 96.5611C338.376 115.611 332.872 126.217 320.869 143.398L295.286 149.696L298.434 117.028L291.743 149.696ZM288.201 102.859L290.563 58.7765C311.372 44.9071 323.673 38.2069 346.452 27.683C342.227 54.5873 338.249 68.1346 331.496 92.6252L329.134 80.8175L324.411 94.1995L298.434 101.284V71.765C297.385 81.2111 295.286 100.34 295.286 101.284C295.286 102.229 290.563 102.727 288.201 102.859Z\" fill=\"#0F0303\"/>\r\n<path d=\"M282.691 154.419L291.743 149.696L298.434 117.028L295.286 149.696L320.869 143.398C332.872 126.217 338.376 115.611 348.027 96.5611C326.513 99.9185 314.537 101.964 295.286 109.55C290.709 111.781 289.273 113.655 288.201 117.815L282.691 154.419Z\" fill=\"#516F6E\"/>\r\n<path d=\"M290.563 58.7765L288.201 102.859C290.563 102.727 295.286 102.229 295.286 101.284C295.286 100.34 297.385 81.2111 298.434 71.765V101.284L324.411 94.1995L329.134 80.8175L331.496 92.6252C338.249 68.1346 342.227 54.5873 346.452 27.683C323.673 38.2069 311.372 44.9071 290.563 58.7765Z\" fill=\"#809F9A\"/>\r\n<path d=\"M70.1529 102.071L62.2811 99.3162L55.5901 67.8291L57.9516 97.7419L30.4004 92.6252L26.4645 82.7855V92.6252H23.3158L11.1145 29.2574L65.4298 59.1701L70.1529 102.071Z\" fill=\"#809F9A\"/>\r\n<path d=\"M59.1324 114.273L65.4298 147.728L75.2695 156.78L71.7272 120.57C70.3694 116.005 69.5966 113.449 65.4298 109.55L36.8946 103.055L8.35941 96.5611L33.9427 142.611L62.2811 149.696L59.1324 114.273Z\" fill=\"#547A75\"/>\r\n<path d=\"M243.332 215.819C251.28 210.93 254.764 207.766 259.863 201.649L270.096 186.693L282.691 184.725C278.737 195.295 274.951 199.845 267.734 207.553C259.903 214.973 253.642 214.519 243.332 215.819Z\" fill=\"#505453\"/>\r\n<path d=\"M179.571 246.125C206.65 228.807 226.539 215.031 233.099 210.308L239.003 219.754C236.366 226.06 234.423 229.471 230.737 235.498C227.034 238.652 224.472 239.486 219.717 240.615L221.685 222.116L216.568 240.615L202.792 248.093L205.154 233.136L199.25 248.093C192.205 254.486 188.103 256.561 180.751 259.9L179.571 246.125Z\" fill=\"#464949\"/>\r\n<path d=\"M178.39 246.125V259.9L152.807 245.731L147.69 231.168L148.477 243.37L130.766 236.679L123.681 222.51L128.404 213.457L178.39 246.125Z\" fill=\"#4E5151\"/>\r\n<path d=\"M113.841 217.786C105.856 216.453 101.655 215.333 94.949 212.276C86.0078 202.767 81.759 196.853 75.2695 185.512L89.4387 188.267L113.841 217.786Z\" fill=\"#3E4242\"/>\r\n<path d=\"M271.67 182.363C281.016 172.442 286.161 166.859 292.924 156.387C299.869 152.752 303.835 151.931 311.029 152.451C307.733 162.203 304.88 167.417 297.254 176.066C287.117 179.623 281.543 180.8 271.67 182.363Z\" fill=\"#2BAA97\"/>\r\n<path d=\"M84.7157 181.97L65.4298 156.78L46.1439 152.451L59.1324 174.885L84.7157 181.97Z\" fill=\"#35B19F\"/>\r\n<path d=\"M125.255 210.308L120.532 217.786C112.917 213.014 109.512 208.853 104.002 200.469C99.3401 194.777 97.2627 190.947 93.3746 184.331C82.5376 176.287 78.9745 170.21 71.7272 159.929L125.255 210.308Z\" fill=\"#5C8881\"/>\r\n<path d=\"M235.46 207.553L241.758 215.819L264.979 186.693V182.363C276.328 173.936 280.275 168.249 287.192 158.281L287.414 157.961L235.46 207.553Z\" fill=\"#699992\"/>\r\n<path d=\"M287.414 157.961L235.46 207.553L241.758 215.819L264.979 186.693V182.363C276.328 173.936 280.275 168.249 287.192 158.281M287.414 157.961L287.192 158.281M287.414 157.961C287.34 158.068 287.266 158.175 287.192 158.281M119.351 222.51C107.803 221.193 101.608 219.68 91.4067 214.638C80.7341 204.3 76.7918 196.568 69.3657 183.151L56.7708 178.821L40.6337 150.876L31.5812 146.547L0.881226 92.6252L19.7735 93.4124C13.3388 65.6329 10.5821 49.9302 6.78506 21.7792L65.4298 53.2663V43.4266C109.051 24.8789 133.544 14.8191 177.603 0.525391C221.975 14.7966 246.743 23.5226 290.563 41.4586V54.0535C312.503 39.9631 325.725 33.4161 349.601 22.1728C347.982 49.8109 344.933 65.2237 337.4 92.6252C344.028 91.2034 347.419 91.1602 353.143 91.838C343.595 113.267 338.375 125.323 324.411 145.366L316.933 150.876C310.429 164.308 305.92 170.877 298.434 179.608L289.382 182.363C284.167 192.532 280.922 198.276 273.638 208.734C268.983 213.957 258.101 220.71 255.927 219.754C255.927 219.754 246.743 221.329 243.332 222.116L230.737 240.615L216.568 244.944C202.294 253.955 194.246 258.619 179.571 264.23L129.191 239.827C125.011 235.243 123 230.72 119.49 222.822M119.351 222.51L119.49 222.822M119.351 222.51C119.398 222.614 119.444 222.718 119.49 222.822M179.571 246.125C206.65 228.807 226.539 215.031 233.099 210.308L239.003 219.754C236.366 226.06 234.423 229.471 230.737 235.498C227.034 238.652 224.472 239.486 219.717 240.615L221.685 222.116L216.568 240.615L202.792 248.093L205.154 233.136L199.25 248.093C192.205 254.486 188.103 256.561 180.751 259.9L179.571 246.125ZM178.39 246.125V259.9L152.807 245.731L147.69 231.168L148.477 243.37L130.766 236.679L123.681 222.51L128.404 213.457L178.39 246.125ZM125.255 210.308L120.532 217.786C112.917 213.014 109.512 208.853 104.002 200.469C99.3401 194.777 97.2627 190.947 93.3746 184.331C82.5376 176.287 78.9745 170.21 71.7272 159.929L125.255 210.308ZM113.841 217.786C105.856 216.453 101.655 215.333 94.949 212.276C86.0078 202.767 81.759 196.853 75.2695 185.512L89.4387 188.267L113.841 217.786ZM84.7157 181.97L65.4298 156.78L46.1439 152.451L59.1324 174.885L84.7157 181.97ZM59.1324 114.273L65.4298 147.728L75.2695 156.78L71.7272 120.57C70.3694 116.005 69.5966 113.449 65.4298 109.55L36.8946 103.055L8.35941 96.5611L33.9427 142.611L62.2811 149.696L59.1324 114.273ZM70.1529 102.071L62.2811 99.3162L55.5901 67.8291L57.9516 97.7418L30.4004 92.6252L26.4645 82.7855V92.6252H23.3158L11.1145 29.2574L65.4298 59.1701L70.1529 102.071ZM243.332 215.819C251.28 210.93 254.764 207.766 259.863 201.649L270.096 186.693L282.691 184.725C278.737 195.295 274.951 199.845 267.735 207.553C259.903 214.973 253.642 214.519 243.332 215.819ZM271.67 182.363C281.016 172.442 286.161 166.859 292.924 156.387C299.869 152.752 303.835 151.931 311.029 152.451C307.733 162.203 304.88 167.417 297.254 176.066C287.117 179.623 281.543 180.8 271.67 182.363ZM282.691 154.419L291.743 149.696L298.434 117.028L295.286 149.696L320.869 143.398C332.872 126.217 338.376 115.611 348.027 96.5611C326.513 99.9185 314.537 101.964 295.286 109.55C290.709 111.781 289.273 113.655 288.201 117.815L282.691 154.419ZM290.563 58.7765L288.201 102.859C290.563 102.727 295.286 102.229 295.286 101.284C295.286 100.34 297.385 81.2111 298.434 71.765V101.284L324.411 94.1995L329.134 80.8175L331.496 92.6252C338.249 68.1346 342.227 54.5873 346.452 27.683C323.673 38.2069 311.372 44.9071 290.563 58.7765Z\" stroke=\"#161515\"/>\r\n<path d=\"M178.39 3.67407L70.153 43.4266L83.1414 160.716C117.087 195.637 137.91 213.131 179.571 239.04C219.015 210.583 240.634 193.072 277.968 157.961L285.446 42.6394L178.39 3.67407Z\" fill=\"#8894A5\"/>\r\n<path d=\"M199.25 30.438L196.888 19.4175C225.208 26.0572 242.545 32.5643 276.787 50.511C274.734 88.3891 272.998 109.421 268.915 146.547C243.862 173.843 228.532 188.231 199.25 212.67\" stroke=\"#0F0303\" stroke-width=\"4\"/>\r\n<path d=\"M157.923 31.2253L160.285 20.2048C131.965 26.8445 114.628 33.3517 80.3861 51.2984C82.4391 89.1764 84.1752 110.208 88.2579 147.334C113.311 174.63 128.641 189.018 157.923 213.457\" stroke=\"#0F0303\" stroke-width=\"4\"/>\r\n<path d=\"M178.39 220.541V196.533M178.39 196.533L220.897 173.704L250.417 138.281L263.011 134.345M178.39 196.533L135.095 173.704L106.757 138.281L92.9811 134.345\" stroke=\"#0F0303\" stroke-width=\"4\"/>\r\n<path d=\"M109.118 69.0099C106.124 133.901 117.358 162.277 178.39 187.48C237.899 161.032 253.138 135 248.842 69.0099L225.227 83.9662V140.249L178.39 165.046L133.127 140.249V83.9662L109.118 69.0099Z\" fill=\"#4B5F81\"/>\r\n<path d=\"M178.39 39.8843L109.118 69.0099L133.127 83.9662L178.39 55.2342L225.227 83.9662L248.842 69.0099L178.39 39.8843Z\" fill=\"#4B5F81\"/>\r\n<path d=\"M109.118 69.0099C106.124 133.901 117.358 162.277 178.39 187.48C237.899 161.032 253.138 135 248.842 69.0099M109.118 69.0099L178.39 39.8843L248.842 69.0099M109.118 69.0099L133.127 83.9662M109.118 69.0099L80.7798 51.6919M248.842 69.0099L225.227 83.9662M248.842 69.0099L276 51.6919M225.227 83.9662L178.39 55.2342L133.127 83.9662M225.227 83.9662V140.249L178.39 165.046L133.127 140.249V83.9662\" stroke=\"black\" stroke-width=\"4\"/>\r\n<path d=\"M137.063 138.281L178.783 160.322V104.433L137.063 86.7213V138.281Z\" fill=\"#5691DF\"/>\r\n<path d=\"M220.897 84.7533L178.783 104.433V160.322L220.897 138.281V84.7533Z\" fill=\"#5691DF\"/>\r\n<path d=\"M178.783 104.433L220.897 84.7533L178.783 60.3508V104.433Z\" fill=\"#5691DF\"/>\r\n<path d=\"M178.783 60.3508L137.063 86.7213L178.783 104.433V60.3508Z\" fill=\"#5691DF\"/>\r\n<path d=\"M178.783 104.433L220.897 84.7533M178.783 104.433V60.3508M178.783 104.433L137.063 86.7213M178.783 104.433V160.322M220.897 84.7533V138.281L178.783 160.322M220.897 84.7533L178.783 60.3508M178.783 160.322L137.063 138.281V86.7213M137.063 86.7213L178.783 60.3508\" stroke=\"white\" stroke-width=\"3\"/>\r\n</svg>",
+    "days": 90,
+    "number_of_questions": 180
+  }
+},
+{
+  "model": "common.difficulty",
+  "pk": 3,
+  "fields": {
+    "name": "Crushing",
+    "mode_name": "Hard",
+    "logo": "<svg width=\"347\" height=\"298\" viewBox=\"0 0 347 298\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\r\n<path d=\"M228.348 122.113C227.808 129.923 226.36 134.079 219.295 140.612L218.508 141.399L171.278 200.831L124.44 142.58C116.844 134.063 113.319 129.447 113.026 122.507L142.939 62.6813C128.173 72.4065 117.607 81.6548 109.149 92.5941C103.983 99.2766 99.6036 106.59 95.5342 115.029C91.2353 123.943 87.2825 134.114 83.1136 146.122C85.3965 150.795 87.9644 154.728 91.379 158.35C92.355 159.385 93.4002 160.395 94.5277 161.39C101.216 167.29 110.799 172.653 126.015 179.577C136.776 185.302 144.666 190.085 151.204 195.131C153.294 196.744 155.245 198.383 157.108 200.089C158.345 201.222 159.543 202.384 160.717 203.586C164.328 207.287 167.708 211.374 171.278 216.181C175.277 211.458 178.947 207.317 182.574 203.586C184.038 202.08 185.496 200.641 186.965 199.257C188.409 197.897 189.865 196.59 191.351 195.327C200.115 187.872 209.906 181.913 224.412 175.248C237.178 170.679 245.412 166.629 251.578 160.685C255.652 156.758 258.823 152.005 261.803 145.729L249.306 116.209L238.975 91.8069L197.232 54.416C207.818 76.0479 216.96 95.8854 228.348 122.113Z\" fill=\"#63616C\"/>\r\n<path d=\"M91.379 158.35C87.9644 154.728 85.3965 150.795 83.1136 146.122C87.2825 134.114 91.2353 123.943 95.5342 115.029L85.8687 108.676L9.90606 58.7454C19.1526 102.596 27.0901 122.184 46.5098 147.697L66.3895 160.695C66.5834 160.82 66.7791 160.948 66.9765 161.079C73.0601 171.892 77.2339 177.927 85.8687 188.63C89.8625 179.706 90.8071 172.662 91.379 158.35Z\" fill=\"#323440\"/>\r\n<path d=\"M249.306 116.209L261.803 145.729C258.823 152.005 255.652 156.758 251.578 160.685C255.943 180.85 256.686 187.449 260.622 190.598C271.233 181.449 274.964 173.485 279.514 160.685L283.493 158.649C290.848 154.618 296.022 150.09 304.311 141.399C322.383 108.782 326.799 90.3799 335.01 57.5647L259.048 110.306L249.306 116.209Z\" fill=\"#323440\"/>\r\n<path d=\"M260.622 190.598C256.686 187.449 255.943 180.85 251.578 160.685C244.574 185.004 240.727 197.084 234.645 203.586C228.348 208.309 211.213 210.519 191.351 195.327C189.865 196.59 188.409 197.897 186.965 199.257L198.435 229.957C195.936 232.456 190.468 224.567 184.439 208.703C180.498 211.396 180.081 214.759 189.383 231.137C198.379 241.035 197.776 244.397 182.574 244.913C176.674 242.802 174.387 240.332 171.278 234.68C167.434 239.826 164.939 242.428 157.895 244.913C149.45 243.389 145.636 241.926 151.204 231.137C160.433 219.638 161.609 215.484 157.895 211.458C157.895 211.458 153.172 222.085 144.907 229.957C136.642 237.828 157.108 200.089 157.108 200.089C155.245 198.383 153.294 196.744 151.204 195.131C138.872 205.925 131.009 209.815 112.239 205.948C103.63 197.057 100.156 185.28 94.5277 161.39C93.4002 160.395 92.355 159.385 91.379 158.35C90.8071 172.662 89.8625 179.706 85.8687 188.63C81.2168 193.77 77.4676 195.498 67.37 195.131C70.5053 212.37 73.7008 221.276 87.0495 233.105C94.0706 233.729 96.4681 233.544 100.432 233.105C107.058 231.901 110.391 231.028 114.994 228.776C123.535 223.822 127.4 224.313 133.493 227.989L135.855 233.499L149.63 263.018L155.534 275.219L162.225 264.986L167.336 277.581L173.245 292.144L181.07 276.007L185.84 266.167L192.925 274.826L198.435 260.263C205.525 248.227 208.749 242.023 212.604 232.318C214.165 229.468 215.609 227.92 218.902 225.234C227.325 224.891 231.573 226.11 238.581 229.957C245.664 233.601 250.955 233.809 263.377 229.957C273.248 216.62 276.694 208.866 277.94 194.404C269.641 194.793 263.838 193.17 260.622 190.598Z\" fill=\"#65616C\"/>\r\n<path d=\"M151.204 195.131C144.666 190.085 136.776 185.302 126.015 179.577C110.799 172.653 101.216 167.29 94.5277 161.39C100.156 185.28 103.63 197.057 112.239 205.948C131.009 209.815 138.872 205.925 151.204 195.131Z\" fill=\"black\"/>\r\n<path d=\"M67.37 195.131C77.4676 195.498 81.2168 193.77 85.8687 188.63C62.2918 180.519 53.3407 166.898 36.2765 144.941L46.5098 147.697L3.60864 129.198C11.1732 148.532 20.4034 161.314 41.3932 185.875C48.2325 192.586 54.1978 194.357 67.37 195.131Z\" fill=\"#696464\"/>\r\n<path d=\"M107.91 237.435L120.505 264.986L122.472 257.114L129.951 263.643L137.429 261.663C129.609 251.14 127.816 243.989 126.015 232.318L135.855 233.499L133.493 227.989C127.4 224.313 123.535 223.822 114.994 228.776C110.391 231.028 107.058 231.901 100.432 233.105C96.4681 233.544 94.0706 233.729 87.0495 233.105L89.0174 235.82C94.6786 237.598 98.5105 238.153 107.91 237.435Z\" fill=\"#191818\"/>\r\n<path d=\"M135.855 233.499L126.015 232.318C127.816 243.989 129.609 251.14 137.429 261.663C138.493 263.095 139.669 264.59 140.971 266.167C143.729 263.141 145.656 262.559 149.63 263.018L135.855 233.499Z\" fill=\"#3D3939\"/>\r\n<path d=\"M98.4636 248.849C103.961 257.56 109.165 260.807 120.505 264.986L107.91 237.435C98.5105 238.153 94.6786 237.598 89.0174 235.82L98.4636 248.849Z\" fill=\"#3D3A3A\"/>\r\n<path d=\"M192.925 274.826L185.84 266.167L181.07 276.007C181.726 283.77 183.892 287.726 190.563 294.112C208.373 285.99 214.118 279.63 215.753 264.592L208.275 263.643C207.291 265.306 206.246 267.058 205.126 268.922L198.435 260.263L192.925 274.826Z\" fill=\"#404242\"/>\r\n<path d=\"M312.576 143.761C295.867 166.655 284.052 178.283 260.622 190.598C263.838 193.17 269.641 194.793 277.94 194.404C282.847 194.174 288.626 193.241 295.258 191.385C298.499 189.951 301.487 188.135 304.311 185.927C317.462 175.644 327.058 156.848 342.095 128.411L304.311 141.399C296.022 150.09 290.848 154.618 283.493 158.649L312.576 143.761Z\" fill=\"#696363\"/>\r\n<path d=\"M198.435 260.263L205.126 268.922C206.246 267.058 207.291 265.306 208.275 263.643C215.174 251.977 219.055 244.661 224.412 233.499L212.604 232.318C208.749 242.023 205.525 248.227 198.435 260.263Z\" fill=\"#504646\"/>\r\n<path d=\"M212.604 232.318L224.412 233.499C219.055 244.661 215.174 251.977 208.275 263.643L215.753 264.592L224.412 257.114L228.348 266.56C234.004 254.85 235.889 248.664 238.581 237.828C244.92 238.378 248.958 237.798 256.812 235.073C258.593 233.162 260.69 231.574 263.377 229.957C250.955 233.809 245.664 233.601 238.581 229.957C231.573 226.11 227.325 224.891 218.902 225.234C215.609 227.92 214.165 229.468 212.604 232.318Z\" fill=\"#1D1B1A\"/>\r\n<path d=\"M249.602 248.062C251.943 241.971 253.978 238.114 256.812 235.073C248.958 237.798 244.92 238.378 238.581 237.828C235.889 248.664 234.004 254.85 228.348 266.56C238.357 262.78 243.468 259.651 249.602 248.062Z\" fill=\"#595353\"/>\r\n<path d=\"M157.895 211.458L160.717 203.586C159.543 202.384 158.345 201.222 157.108 200.089C157.108 200.089 136.642 237.828 144.907 229.957C153.172 222.085 157.895 211.458 157.895 211.458Z\" fill=\"#161413\"/>\r\n<path d=\"M198.435 229.957L186.965 199.257C185.496 200.641 184.038 202.08 182.574 203.586C183.2 205.373 183.822 207.08 184.439 208.703C190.468 224.567 195.936 232.456 198.435 229.957Z\" fill=\"#161413\"/>\r\n<path d=\"M251.578 160.685C245.412 166.629 237.178 170.679 224.412 175.248C209.906 181.913 200.115 187.872 191.351 195.327C211.213 210.519 228.348 208.309 234.645 203.586C240.727 197.084 244.574 185.004 251.578 160.685Z\" fill=\"black\"/>\r\n<path d=\"M172.065 4.43018L142.939 62.6813L113.026 122.507C113.319 129.447 116.844 134.063 124.44 142.58L172.852 55.9903L212.604 129.591L218.508 141.399L219.295 140.612C226.36 134.079 227.808 129.923 228.348 122.113C216.96 95.8854 207.818 76.0479 197.232 54.416C189.932 39.5013 181.947 23.7336 172.065 4.43018Z\" fill=\"#516F6E\"/>\r\n<path d=\"M149.63 263.018C145.656 262.559 143.729 263.141 140.971 266.167C139.669 264.59 138.493 263.095 137.429 261.663L129.951 263.643C132.286 280.27 138.796 286.54 157.895 293.324C161.351 288.33 163.47 284.631 167.336 277.581L162.225 264.986L155.534 275.219L149.63 263.018Z\" fill=\"#4E5151\"/>\r\n<path d=\"M218.508 141.399L212.604 129.591L172.852 55.9903L124.44 142.58L171.278 200.831L218.508 141.399Z\" fill=\"#5691DF\"/>\r\n<path d=\"M304.311 185.927C301.487 188.135 298.499 189.951 295.258 191.385C288.626 193.241 282.847 194.174 277.94 194.404C276.694 208.866 273.248 216.62 263.377 229.957L266.92 236.254C289.354 231.925 298.51 212.523 304.311 185.927Z\" fill=\"#2BAA97\"/>\r\n<path d=\"M67.37 195.131C54.1978 194.357 48.2325 192.586 41.3932 185.875C47.1398 214.751 54.0821 227.008 77.9969 236.648L87.0495 233.105C73.7008 221.276 70.5053 212.37 67.37 195.131Z\" fill=\"#35B19F\"/>\r\n<path d=\"M259.835 252.785L266.92 236.254L263.377 229.957C260.69 231.574 258.593 233.162 256.812 235.073C253.978 238.114 251.943 241.971 249.602 248.062L259.835 252.785Z\" fill=\"#699992\"/>\r\n<path d=\"M87.0495 233.105L77.9969 236.648C79.9717 243.643 81.399 247.452 85.8687 253.572L98.4636 248.849L89.0174 235.82L87.0495 233.105Z\" fill=\"#699992\"/>\r\n<path d=\"M46.5098 147.697L36.2765 144.941C53.3407 166.898 62.2918 180.519 85.8687 188.63C77.2339 177.927 73.0601 171.892 66.9765 161.079L66.3895 160.695C58.015 155.284 52.8073 154.681 46.5098 147.697Z\" fill=\"#516F6E\"/>\r\n<path d=\"M279.514 160.685C274.964 173.485 271.233 181.449 260.622 190.598C284.052 178.283 295.867 166.655 312.576 143.761L283.493 158.649C282.239 159.336 280.921 160.008 279.514 160.685Z\" fill=\"#516F6E\"/>\r\n<path d=\"M268.494 87.871L238.975 91.8069L249.306 116.209L259.048 110.306L268.494 87.871Z\" fill=\"#809F9A\"/>\r\n<path d=\"M85.8687 108.676L95.5342 115.029C99.6036 106.59 103.983 99.2766 109.149 92.5941L77.6034 87.0838L85.8687 108.676Z\" fill=\"#809F9A\"/>\r\n<path d=\"M182.574 203.586C178.947 207.317 175.277 211.458 171.278 216.181C167.708 211.374 164.328 207.287 160.717 203.586L157.895 211.458C161.609 215.484 160.433 219.638 151.204 231.137C145.636 241.926 149.45 243.389 157.895 244.913C164.939 242.428 167.434 239.826 171.278 234.68C174.387 240.332 176.674 242.802 182.574 244.913C197.776 244.397 198.379 241.035 189.383 231.137C180.081 214.759 180.498 211.396 184.439 208.703C183.822 207.08 183.2 205.373 182.574 203.586Z\" fill=\"#8894A5\"/>\r\n<path d=\"M83.1136 146.122C85.3965 150.795 87.9644 154.728 91.379 158.35M83.1136 146.122C87.2825 134.114 91.2353 123.943 95.5342 115.029M83.1136 146.122C61.6046 123.642 50.6616 110.68 32.7342 87.0838M142.939 62.6813L172.065 4.43018C181.947 23.7336 189.932 39.5013 197.232 54.416M142.939 62.6813L113.026 122.507C113.319 129.447 116.844 134.063 124.44 142.58M142.939 62.6813C128.173 72.4065 117.607 81.6548 109.149 92.5941M218.508 141.399L212.604 129.591L172.852 55.9903L124.44 142.58M218.508 141.399L219.295 140.612C226.36 134.079 227.808 129.923 228.348 122.113C216.96 95.8854 207.818 76.0479 197.232 54.416M218.508 141.399L171.278 200.831L124.44 142.58M261.803 145.729L309.821 91.8069M261.803 145.729L249.306 116.209M261.803 145.729C258.823 152.005 255.652 156.758 251.578 160.685M238.975 91.8069L197.232 54.416M238.975 91.8069L268.494 87.871L259.048 110.306M238.975 91.8069L249.306 116.209M259.048 110.306L249.306 116.209M259.048 110.306L335.01 57.5647C326.799 90.3799 322.383 108.782 304.311 141.399M304.311 141.399L342.095 128.411C327.058 156.848 317.462 175.644 304.311 185.927M304.311 141.399C296.022 150.09 290.848 154.618 283.493 158.649M279.514 160.685C274.964 173.485 271.233 181.449 260.622 190.598M279.514 160.685L283.493 158.649M279.514 160.685C280.921 160.008 282.239 159.336 283.493 158.649M260.622 190.598C256.686 187.449 255.943 180.85 251.578 160.685M260.622 190.598C284.052 178.283 295.867 166.655 312.576 143.761L283.493 158.649M260.622 190.598C263.838 193.17 269.641 194.793 277.94 194.404M251.578 160.685C245.412 166.629 237.178 170.679 224.412 175.248C209.906 181.913 200.115 187.872 191.351 195.327M251.578 160.685C244.574 185.004 240.727 197.084 234.645 203.586C228.348 208.309 211.213 210.519 191.351 195.327M304.311 185.927C301.487 188.135 298.499 189.951 295.258 191.385C288.626 193.241 282.847 194.174 277.94 194.404M304.311 185.927C298.51 212.523 289.354 231.925 266.92 236.254M266.92 236.254L259.835 252.785L249.602 248.062M266.92 236.254L263.377 229.957M249.602 248.062C251.943 241.971 253.978 238.114 256.812 235.073M249.602 248.062C243.468 259.651 238.357 262.78 228.348 266.56M263.377 229.957C273.248 216.62 276.694 208.866 277.94 194.404M263.377 229.957C250.955 233.809 245.664 233.601 238.581 229.957C231.573 226.11 227.325 224.891 218.902 225.234C215.609 227.92 214.165 229.468 212.604 232.318M263.377 229.957C260.69 231.574 258.593 233.162 256.812 235.073M191.351 195.327C189.865 196.59 188.409 197.897 186.965 199.257M186.965 199.257L198.435 229.957C195.936 232.456 190.468 224.567 184.439 208.703M186.965 199.257C185.496 200.641 184.038 202.08 182.574 203.586M182.574 203.586C178.947 207.317 175.277 211.458 171.278 216.181C167.708 211.374 164.328 207.287 160.717 203.586M182.574 203.586C183.2 205.373 183.822 207.08 184.439 208.703M184.439 208.703C180.498 211.396 180.081 214.759 189.383 231.137C198.379 241.035 197.776 244.397 182.574 244.913C176.674 242.802 174.387 240.332 171.278 234.68M171.278 234.68C167.434 239.826 164.939 242.428 157.895 244.913C149.45 243.389 145.636 241.926 151.204 231.137C160.433 219.638 161.609 215.484 157.895 211.458M171.278 234.68L173.245 292.144M157.895 211.458L160.717 203.586M157.895 211.458C157.895 211.458 153.172 222.085 144.907 229.957C136.642 237.828 157.108 200.089 157.108 200.089M160.717 203.586C159.543 202.384 158.345 201.222 157.108 200.089M157.108 200.089C155.245 198.383 153.294 196.744 151.204 195.131M151.204 195.131C144.666 190.085 136.776 185.302 126.015 179.577C110.799 172.653 101.216 167.29 94.5277 161.39M151.204 195.131C138.872 205.925 131.009 209.815 112.239 205.948C103.63 197.057 100.156 185.28 94.5277 161.39M94.5277 161.39C93.4002 160.395 92.355 159.385 91.379 158.35M91.379 158.35C90.8071 172.662 89.8625 179.706 85.8687 188.63M85.8687 188.63C81.2168 193.77 77.4676 195.498 67.37 195.131M85.8687 188.63C62.2918 180.519 53.3407 166.898 36.2765 144.941L46.5098 147.697M85.8687 188.63C77.2339 177.927 73.0601 171.892 66.9765 161.079M67.37 195.131C54.1978 194.357 48.2325 192.586 41.3932 185.875M67.37 195.131C70.5053 212.37 73.7008 221.276 87.0495 233.105M41.3932 185.875C20.4034 161.314 11.1732 148.532 3.60864 129.198L46.5098 147.697M41.3932 185.875C47.1398 214.751 54.0821 227.008 77.9969 236.648M46.5098 147.697C27.0901 122.184 19.1526 102.596 9.90606 58.7454L85.8687 108.676M46.5098 147.697L66.3895 160.695M46.5098 147.697C52.8073 154.681 58.015 155.284 66.3895 160.695M66.9765 161.079C66.7791 160.948 66.5834 160.82 66.3895 160.695M66.9765 161.079L66.3895 160.695M95.5342 115.029L85.8687 108.676M95.5342 115.029C99.6036 106.59 103.983 99.2766 109.149 92.5941M85.8687 108.676L77.6034 87.0838L109.149 92.5941M87.0495 233.105L77.9969 236.648M87.0495 233.105L89.0174 235.82M87.0495 233.105C94.0706 233.729 96.4681 233.544 100.432 233.105C107.058 231.901 110.391 231.028 114.994 228.776C123.535 223.822 127.4 224.313 133.493 227.989L135.855 233.499M77.9969 236.648C79.9717 243.643 81.399 247.452 85.8687 253.572L98.4636 248.849M98.4636 248.849C103.961 257.56 109.165 260.807 120.505 264.986M98.4636 248.849L89.0174 235.82M120.505 264.986L107.91 237.435C98.5105 238.153 94.6786 237.598 89.0174 235.82M120.505 264.986L122.472 257.114L129.951 263.643M135.855 233.499L126.015 232.318C127.816 243.989 129.609 251.14 137.429 261.663M135.855 233.499L149.63 263.018M149.63 263.018C145.656 262.559 143.729 263.141 140.971 266.167C139.669 264.59 138.493 263.095 137.429 261.663M149.63 263.018L155.534 275.219L162.225 264.986L167.336 277.581M173.245 292.144L181.07 276.007M173.245 292.144L167.336 277.581M198.435 260.263L192.925 274.826L185.84 266.167L181.07 276.007M198.435 260.263L205.126 268.922C206.246 267.058 207.291 265.306 208.275 263.643M198.435 260.263C205.525 248.227 208.749 242.023 212.604 232.318M212.604 232.318L224.412 233.499C219.055 244.661 215.174 251.977 208.275 263.643M256.812 235.073C248.958 237.798 244.92 238.378 238.581 237.828C235.888 248.664 234.004 254.85 228.348 266.56M228.348 266.56L224.412 257.114L215.753 264.592M215.753 264.592L208.275 263.643M215.753 264.592C214.118 279.63 208.373 285.99 190.563 294.112C183.892 287.726 181.726 283.77 181.07 276.007M167.336 277.581C163.47 284.631 161.351 288.33 157.895 293.324C138.796 286.54 132.286 280.27 129.951 263.643M129.951 263.643L137.429 261.663\" stroke=\"black\" stroke-width=\"4\"/>\r\n<path d=\"M172.458 64.2556L132.312 137.463H163.406L170.49 194.534L172.852 137.463H204.339L175.607 66.2236L196.861 131.166L173.639 131.953L172.852 68.5851L163.406 131.953C155.781 131.009 140.514 134.739 142.152 131.953C145.637 126.024 163.143 84.0663 172.458 64.2556Z\" fill=\"#D9D9D9\" stroke=\"#FFFBFB\"/>\r\n<path d=\"M172.065 12.302C173.014 29.5795 172.065 37.8853 172.065 48.9058\" stroke=\"#FFFBFB\"/>\r\n</svg>",
+    "days": 90,
+    "number_of_questions": 270
+  }
+}
+]
