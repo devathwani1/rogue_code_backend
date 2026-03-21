@@ -9,12 +9,11 @@ class QuestionPlan(models.Model):
         on_delete=models.CASCADE,
         related_name="plans"
     )
-    version = models.PositiveIntegerField(default=1)
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Plan {self.version} - {self.difficulty.name}"
+        return f"Plan - {self.difficulty.name}"
 
 
 class DailyPlan(models.Model):

@@ -10,10 +10,36 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Load .env files (first wins for duplicate keys). See GOOGLE_OAUTH_CLIENT_ID below.
+_ENV_FILES = [
+    BASE_DIR / ".env",  # rogue_code_backend/.env
+    BASE_DIR.parent / ".env",  # monorepo root .env
+    BASE_DIR.parent / "rogue_code_frontend" / ".env",  # same Client ID often lives here as VITE_*
+]
+try:
+    from dotenv import load_dotenv
+
+    for _env_path in _ENV_FILES:
+        if _env_path.is_file():
+            load_dotenv(_env_path, override=False)
+except ImportError:
+    pass
+
+# Google Sign-In: Web Client IDs from env (same value from Google Cloud; often duplicated as VITE_* and GOOGLE_*).
+# Order: VITE first — the ID token's `aud` matches the client ID used in the browser (VITE_GOOGLE_CLIENT_ID).
+_GOOGLE_OAUTH_IDS: list[str] = []
+for _key in ("VITE_GOOGLE_CLIENT_ID", "GOOGLE_OAUTH_CLIENT_ID"):
+    _v = (os.environ.get(_key) or "").strip()
+    if _v and _v not in _GOOGLE_OAUTH_IDS:
+        _GOOGLE_OAUTH_IDS.append(_v)
+GOOGLE_OAUTH_CLIENT_IDS = _GOOGLE_OAUTH_IDS
+GOOGLE_OAUTH_CLIENT_ID = _GOOGLE_OAUTH_IDS[0] if _GOOGLE_OAUTH_IDS else ""
 
 
 # Quick-start development settings - unsuitable for production
@@ -123,7 +149,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+# Default display / naive-datetime interpretation. DB still stores UTC when USE_TZ=True.
+# Day-boundary business logic (e.g. midnight rollover): use Asia/Kolkata explicitly (IST).
+TIME_ZONE = "Asia/Kolkata"
 
 USE_I18N = True
 
@@ -152,8 +180,8 @@ from datetime import timedelta
 SIMPLE_JWT = {
     "USER_ID_FIELD": "user_id",
     "USER_ID_CLAIM": "user_id",
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=7),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
     "AUTH_HEADER_TYPES": ("Bearer",),
 }
 

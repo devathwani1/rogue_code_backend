@@ -42,9 +42,10 @@ class Profile(models.Model):
     is_rogue = models.BooleanField(default=False)
     
     joined_challenge_at = models.DateTimeField(null=True, blank=True)
+    # Last IST calendar date fully processed by the day-close job (inclusive).
+    last_closed_ist_date = models.DateField(null=True, blank=True)
     last_completed_at = models.DateTimeField(null=True, blank=True)
 
-    xp = models.PositiveIntegerField(default=0)
     level = models.PositiveIntegerField(default=1)
 
     def __str__(self):

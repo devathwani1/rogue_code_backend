@@ -1,4 +1,3 @@
-from multiprocessing import context
 from apps.challenges.models import Question
 
 class QuestionService:
@@ -14,10 +13,9 @@ class QuestionService:
             return None
 
     @staticmethod
-    def create_question(data, context):
-        # We handle creation via Serializer now for nested objects
+    def create_question(data, context=None):
         from apps.challenges.serializers.questions import QuestionSerializer
-        serializer = QuestionSerializer(data=data,
-        context=context)
+
+        serializer = QuestionSerializer(data=data, context=context or {})
         serializer.is_valid(raise_exception=True)
         return serializer.save()

@@ -23,6 +23,8 @@ class SubmitSolutionView(APIView):
             result = SubmissionService.evaluate(
                 serializer.validated_data["code"],
                 serializer.validated_data["question_id"],
+                serializer.validated_data.get("language") or "python",
+                request.user,
             )
         except Exception as e:
             # Print evaluation error to Django (Python) console

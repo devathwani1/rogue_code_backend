@@ -1,6 +1,8 @@
 from rest_framework import serializers
 from django.db import transaction
 from apps.challenges.models import Question, QuestionParameter, TestCase
+from apps.challenges.models.progress import DailyPlanItemSolve
+from apps.challenges.utils.solve_language import get_solve_language
 
 class QuestionParameterSerializer(serializers.ModelSerializer):
     class Meta:
@@ -83,22 +85,70 @@ class QuestionSerializer(serializers.ModelSerializer):
             
         return question
 
+    @transaction.atomic
+    def update(self, instance, validated_data):
+        parameters_data = validated_data.pop("parameters", None)
+        test_cases_data = validated_data.pop("test_cases", None)
+
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+        instance.save()
+
+        if parameters_data is not None:
+            instance.parameters.all().delete()
+            for param_data in parameters_data:
+                QuestionParameter.objects.create(question=instance, **param_data)
+
+        if test_cases_data is not None:
+            instance.test_cases.all().delete()
+            for case_data in test_cases_data:
+                TestCase.objects.create(question=instance, **case_data)
+
+        return instance
+
 class QuestionSolveSerializer(serializers.ModelSerializer):
     parameters = QuestionParameterSerializer(many=True, read_only=True)
     test_cases = serializers.SerializerMethodField()
     starter_code = serializers.SerializerMethodField()
+    language = serializers.SerializerMethodField()
+    solve_status = serializers.SerializerMethodField()
 
     class Meta:
         model = Question
         fields = (
-            'id', 'title', 'slug', 'description', 'constraints', 
-            'difficulty', 'function_name', 'return_type', 
-            'parameters', 'test_cases', 'starter_code'
+            'id', 'title', 'slug', 'description', 'constraints',
+            'difficulty', 'function_name', 'return_type',
+            'parameters', 'test_cases', 'starter_code', 'language',
+            'solve_status',
         )
 
     def get_test_cases(self, obj):
         test_cases = obj.test_cases.filter(is_hidden=False)
         return TestCaseSerializer(test_cases, many=True).data
+
+    def get_solve_status(self, obj):
+        """
+        Current user's progress on this question (any matching DailyPlanItem).
+        pending | failed | completed — null if not authenticated.
+        """
+        request = self.context.get("request")
+        user = getattr(request, "user", None)
+        if not user or not user.is_authenticated:
+            return None
+
+        solves = DailyPlanItemSolve.objects.filter(
+            user=user,
+            daily_plan_item__question_id=obj.pk,
+        )
+        if not solves.exists():
+            return "pending"
+        if solves.filter(success=True).exists():
+            return "completed"
+        return "failed"
+
+    def get_language(self, obj):
+        request = self.context.get("request")
+        return get_solve_language(request)
 
     def get_starter_code(self, obj):
         from apps.compiler.services.python_mapper import PythonMapper
@@ -106,13 +156,7 @@ class QuestionSolveSerializer(serializers.ModelSerializer):
         from apps.compiler.services.cpp_mapper import CppMapper
 
         request = self.context.get('request')
-        language = "python"  # Default
-
-        if request and request.user.is_authenticated:
-            try:
-                language = request.user.profile.language or "python"
-            except Exception:
-                pass
+        language = get_solve_language(request)
 
         params = [
             {"name": p.name, "type_schema": p.type_schema} 
