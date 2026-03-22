@@ -10,6 +10,7 @@ from pathlib import Path
 import shutil
 
 from apps.compiler.services.java_mapper import JavaMapper
+from apps.evaluator.services.linked_list_literals import schema_is_linked_list
 from apps.evaluator.services.source_literals import java_literal
 
 
@@ -30,13 +31,34 @@ def _java_expected_object_expr(value, return_schema: dict) -> str:
 def _build_harness_source(question) -> str:
     params = list(question.parameters.all().order_by("order"))
     ret_schema = question.return_type or {}
+    # ListNode lives in the user's Solution.java (java_mapper starter). Only the return path
+    # calls linkedListEquals; omit the helper entirely for non-linked-list returns so Harness
+    # compiles without referencing ListNode (fixes generic array/string problems).
+    needs_linked_list = schema_is_linked_list(ret_schema)
 
     lines = [
         "import java.util.*;",
         "public class Harness {",
-        "  public static void main(String[] args) {",
-        "    Solution sol = new Solution();",
     ]
+    if needs_linked_list:
+        lines.extend(
+            [
+                "  static boolean linkedListEquals(ListNode a, ListNode b) {",
+                "    while (a != null && b != null) {",
+                "      if (a.val != b.val) return false;",
+                "      a = a.next;",
+                "      b = b.next;",
+                "    }",
+                "    return a == null && b == null;",
+                "  }",
+            ]
+        )
+    lines.extend(
+        [
+            "  public static void main(String[] args) {",
+            "    Solution sol = new Solution();",
+        ]
+    )
 
     cases = list(question.test_cases.all())
     lines.append(f"    boolean[] r = new boolean[{len(cases)}];")
@@ -62,9 +84,14 @@ def _build_harness_source(question) -> str:
             f"    Object __a{idx} = sol.{question.function_name}({arg_list});"
         )
         lines.append(f"    Object __e{idx} = {exp_expr};")
-        lines.append(
-            f"    r[{idx}] = java.util.Objects.deepEquals(__a{idx}, __e{idx});"
-        )
+        if schema_is_linked_list(ret_schema):
+            lines.append(
+                f"    r[{idx}] = linkedListEquals((ListNode)__a{idx}, (ListNode)__e{idx});"
+            )
+        else:
+            lines.append(
+                f"    r[{idx}] = java.util.Objects.deepEquals(__a{idx}, __e{idx});"
+            )
 
     lines.extend(
         [

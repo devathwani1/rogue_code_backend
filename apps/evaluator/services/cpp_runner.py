@@ -11,6 +11,7 @@ from pathlib import Path
 import shutil
 
 from apps.compiler.services.cpp_mapper import CppMapper
+from apps.evaluator.services.linked_list_literals import schema_is_linked_list
 from apps.evaluator.services.source_literals import cpp_literal
 
 
@@ -24,6 +25,15 @@ def _build_main_cpp(user_code: str, question) -> str:
 
     parts = []
     parts.append(user_code.strip())
+    parts.append("")
+    parts.append("bool listEquals(ListNode *a, ListNode *b) {")
+    parts.append("    while (a && b) {")
+    parts.append("        if (a->val != b->val) return false;")
+    parts.append("        a = a->next;")
+    parts.append("        b = b->next;")
+    parts.append("    }")
+    parts.append("    return !a && !b;")
+    parts.append("}")
     parts.append("")
     parts.append("int main() {")
     parts.append("    Solution sol;")
@@ -48,11 +58,18 @@ def _build_main_cpp(user_code: str, question) -> str:
         arg_list = ", ".join(f"p{idx}_{j}" for j in range(len(params)))
         exp = _cpp_expected_expr(tc.expected_output, ret_schema)
         ret_t = CppMapper.to_cpp_type(ret_schema)
-        parts.append(
-            f"    {{ {ret_t} __a = sol.{question.function_name}({arg_list}); "
-            f"{ret_t} __e = {exp}; "
-            f"r[{idx}] = (__a == __e); }}"
-        )
+        if schema_is_linked_list(ret_schema):
+            parts.append(
+                f"    {{ {ret_t} __a = sol.{question.function_name}({arg_list}); "
+                f"{ret_t} __e = {exp}; "
+                f"r[{idx}] = listEquals(__a, __e); }}"
+            )
+        else:
+            parts.append(
+                f"    {{ {ret_t} __a = sol.{question.function_name}({arg_list}); "
+                f"{ret_t} __e = {exp}; "
+                f"r[{idx}] = (__a == __e); }}"
+            )
 
     parts.append("    std::cout << \"[\";")
     parts.append("    for (size_t i = 0; i < sizeof(r)/sizeof(r[0]); i++) {")

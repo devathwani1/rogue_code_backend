@@ -61,6 +61,11 @@ def java_literal(value, schema: dict) -> str:
         lines.append("}}")
         return "\n".join(lines)
 
+    if kind == "linked_list":
+        from apps.evaluator.services.linked_list_literals import java_listnode_literal
+
+        return java_listnode_literal(value, schema)
+
     raise ValueError(f"Unsupported schema kind for Java literal: {kind}")
 
 
@@ -119,6 +124,11 @@ def cpp_literal(value, schema: dict) -> str:
             for k, v in value.items()
         )
         return f"unordered_map<{kt}, {vt}>{{{pairs}}}"
+
+    if kind == "linked_list":
+        from apps.evaluator.services.linked_list_literals import cpp_listnode_literal
+
+        return cpp_listnode_literal(value, schema)
 
     raise ValueError(f"Unsupported schema kind for C++ literal: {kind}")
 

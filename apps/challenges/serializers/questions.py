@@ -59,6 +59,14 @@ class QuestionSerializer(serializers.ModelSerializer):
             if key.get("kind") != "primitive":
                  raise serializers.ValidationError("Map keys must be primitive types.")
 
+        elif kind == "linked_list":
+            of = schema.get("of")
+            if not of:
+                raise serializers.ValidationError(
+                    "linked_list must specify 'of' (element type schema)."
+                )
+            self.validate_type_schema(of)
+
         return schema
 
     def validate_return_type(self, value):
