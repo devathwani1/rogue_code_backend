@@ -94,7 +94,8 @@ RET_SCHEMA = json.loads(__RET_JSON__)
 CASES = __CASES__
 
 results = []
-for inp, expected in CASES:
+first_runtime_error = None
+for case_idx, (inp, expected) in enumerate(CASES):
     try:
         args = [
             _json_to_value(inp[i], PARAM_SCHEMAS[i])
@@ -103,10 +104,12 @@ for inp, expected in CASES:
         out = __FN__(*args)
         got = _value_to_json(out, RET_SCHEMA)
         results.append(got == expected)
-    except Exception:
+    except Exception as e:
+        if first_runtime_error is None:
+            first_runtime_error = f"case {case_idx + 1}: {type(e).__name__}: {e}"
         results.append(False)
 
-print(json.dumps(results))
+print(json.dumps({"results": results, "runtime_error": first_runtime_error}))
 """
     body = body.replace("__SCHEMAS_JSON__", schemas_json)
     body = body.replace("__RET_JSON__", ret_json)
@@ -153,12 +156,28 @@ def run_python(user_code: str, question) -> list:
                 f"stderr: {stderr or 'none'}"
             )
         try:
-            return json.loads(stdout)
+            parsed = json.loads(stdout)
+            if isinstance(parsed, dict):
+                runtime_error = parsed.get("runtime_error")
+                results = parsed.get("results")
+                if runtime_error:
+                    raise RuntimeError(f"Python runtime error: {runtime_error}")
+                if isinstance(results, list):
+                    return results
+            return parsed
         except json.JSONDecodeError:
             lines = [ln.strip() for ln in stdout.splitlines() if ln.strip()]
             if lines:
                 try:
-                    return json.loads(lines[-1])
+                    parsed = json.loads(lines[-1])
+                    if isinstance(parsed, dict):
+                        runtime_error = parsed.get("runtime_error")
+                        results = parsed.get("results")
+                        if runtime_error:
+                            raise RuntimeError(f"Python runtime error: {runtime_error}")
+                        if isinstance(results, list):
+                            return results
+                    return parsed
                 except json.JSONDecodeError:
                     pass
             stderr = (result.stderr or "").strip()

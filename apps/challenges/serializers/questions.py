@@ -17,15 +17,24 @@ class TestCaseSerializer(serializers.ModelSerializer):
 class QuestionSerializer(serializers.ModelSerializer):
     parameters = QuestionParameterSerializer(many=True)
     test_cases = TestCaseSerializer(many=True)
+    image = serializers.ImageField(required=False, allow_null=True, write_only=True)
+    image_url = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = Question
         fields = (
-            'id', 'title', 'slug', 'description', 'constraints', 
+            'id', 'title', 'slug', 'description', 'image', 'image_url', 'constraints',
             'difficulty', 'function_name', 'return_type', 
             'parameters', 'test_cases', 'created_at'
         )
         read_only_fields = ('id', 'slug', 'created_at')
+
+    def get_image_url(self, obj):
+        if not obj.image:
+            return None
+        request = self.context.get("request")
+        url = obj.image.url
+        return request.build_absolute_uri(url) if request else url
 
     def validate_type_schema(self, schema):
         if not isinstance(schema, dict):
@@ -120,15 +129,23 @@ class QuestionSolveSerializer(serializers.ModelSerializer):
     starter_code = serializers.SerializerMethodField()
     language = serializers.SerializerMethodField()
     solve_status = serializers.SerializerMethodField()
+    image_url = serializers.SerializerMethodField()
 
     class Meta:
         model = Question
         fields = (
-            'id', 'title', 'slug', 'description', 'constraints',
+            'id', 'title', 'slug', 'description', 'image_url', 'constraints',
             'difficulty', 'function_name', 'return_type',
             'parameters', 'test_cases', 'starter_code', 'language',
             'solve_status',
         )
+
+    def get_image_url(self, obj):
+        if not obj.image:
+            return None
+        request = self.context.get("request")
+        url = obj.image.url
+        return request.build_absolute_uri(url) if request else url
 
     def get_test_cases(self, obj):
         test_cases = obj.test_cases.filter(is_hidden=False)

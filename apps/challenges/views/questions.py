@@ -2,12 +2,25 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
+import json
 
 from apps.challenges.models import Question, UserQuestionLastAttempt
 from apps.challenges.serializers.recent_attempts import UserQuestionLastAttemptSerializer
 from apps.challenges.services.question_service import QuestionService
 from apps.challenges.serializers.questions import QuestionSerializer, QuestionSolveSerializer
 from apps.common.utils import Utils
+
+
+def _normalize_question_payload(request):
+    """
+    Supports multipart/form-data admin uploads where structured fields are JSON strings.
+    """
+    data = request.data.copy()
+    for key in ("return_type", "parameters", "test_cases"):
+        val = data.get(key)
+        if isinstance(val, str):
+            data[key] = json.loads(val)
+    return data
 
 class RecentQuestionAttemptsView(APIView):
     """
@@ -79,8 +92,9 @@ class QuestionListView(APIView):
         ))
 
     def post(self, request):
+        payload = _normalize_question_payload(request)
         question = QuestionService.create_question(
-            request.data, context={"request": request}
+            payload, context={"request": request}
         )
         return Response(
             status=status.HTTP_201_CREATED,
@@ -125,7 +139,7 @@ class QuestionDetailView(APIView):
             )
         serializer = QuestionSerializer(
             question,
-            data=request.data,
+            data=_normalize_question_payload(request),
             partial=True,
             context={"request": request},
         )

@@ -13,6 +13,7 @@ class Question(models.Model):
     title = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(unique=True, blank=True)
     description = models.TextField()
+    image = models.ImageField(upload_to="question_images/", null=True, blank=True)
     constraints = models.TextField(null=True, blank=True)
     function_name = models.CharField(max_length=100)
     return_type = models.JSONField()
