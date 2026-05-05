@@ -15,7 +15,12 @@ def _normalize_question_payload(request):
     """
     Supports multipart/form-data admin uploads where structured fields are JSON strings.
     """
-    data = request.data.copy()
+    # request.data is often a QueryDict for multipart requests; assigning dict/list
+    # values back into QueryDict coerces them to strings. Build a plain dict instead.
+    data = {k: request.data.get(k) for k in request.data.keys()}
+    if "image" in request.FILES:
+        data["image"] = request.FILES["image"]
+
     for key in ("return_type", "parameters", "test_cases"):
         val = data.get(key)
         if isinstance(val, str):
