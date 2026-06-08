@@ -17,9 +17,12 @@ logger = logging.getLogger(__name__)
 class AuthService:
 
     @staticmethod
-    def generate_tokens(user):
+    def generate_tokens(user, access_token_lifetime=None):
         refresh = RefreshToken.for_user(user)
-        return str(refresh.access_token)
+        access_token = refresh.access_token
+        if access_token_lifetime is not None:
+            access_token.set_exp(lifetime=access_token_lifetime)
+        return str(access_token)
         
 
     @staticmethod
@@ -59,7 +62,12 @@ class AuthService:
                 message="Email not verified",
             )
 
-        tokens = AuthService.generate_tokens(user)
+        access_token_lifetime = (
+            settings.TEMPORARY_LOGIN_TOKEN_LIFETIME
+            if validated_data.get("temporary_login")
+            else None
+        )
+        tokens = AuthService.generate_tokens(user, access_token_lifetime=access_token_lifetime)
         return AuthResult(
             success=True,
             auth_state=AuthState.SUCCESS,
@@ -68,7 +76,7 @@ class AuthService:
         )
 
     @staticmethod
-    def google_auth(credential: str) -> AuthResult:
+    def google_auth(credential: str, temporary_login: bool = False) -> AuthResult:
         """
         Verify Google ID token (JWT) from GIS, then sign up or sign in by email.
         """
@@ -181,7 +189,10 @@ class AuthService:
             if not user.is_verified:
                 user.is_verified = True
                 user.save(update_fields=["is_verified"])
-            token = AuthService.generate_tokens(user)
+            access_token_lifetime = (
+                settings.TEMPORARY_LOGIN_TOKEN_LIFETIME if temporary_login else None
+            )
+            token = AuthService.generate_tokens(user, access_token_lifetime=access_token_lifetime)
             return AuthResult(
                 success=True,
                 auth_state=AuthState.SUCCESS,
@@ -200,7 +211,10 @@ class AuthService:
             user.save()
             Profile.objects.create(user=user)
 
-        token = AuthService.generate_tokens(user)
+        access_token_lifetime = (
+            settings.TEMPORARY_LOGIN_TOKEN_LIFETIME if temporary_login else None
+        )
+        token = AuthService.generate_tokens(user, access_token_lifetime=access_token_lifetime)
         return AuthResult(
             success=True,
             auth_state=AuthState.SUCCESS,

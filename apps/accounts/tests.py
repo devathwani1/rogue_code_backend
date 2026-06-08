@@ -1,7 +1,9 @@
 from django.test import TestCase, RequestFactory
 from django.urls import reverse
+from django.conf import settings
 from rest_framework import status
 from rest_framework.test import APIClient
+from rest_framework_simplejwt.tokens import AccessToken
 from apps.accounts.models.user import User
 from apps.accounts.services.auth_result import AuthState, ActionRequired
 from django.core import mail
@@ -71,3 +73,26 @@ class AccountsTests(TestCase):
         user = User.objects.create_user(username="token@test.com", email="token@test.com", password="pass")
         token = AuthService.generate_tokens(user)
         self.assertIsInstance(token, str)
+
+    def test_temporary_login_token_lifetime(self):
+        User.objects.create_user(
+            username=self.email,
+            email=self.email,
+            password=self.password,
+            is_verified=True,
+        )
+
+        response = self.client.post(self.login_url, {
+            "email": self.email,
+            "password": self.password,
+            "temporary_login": True,
+        })
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data["auth_state"], AuthState.SUCCESS)
+        token = AccessToken(response.data["data"]["token"])
+        token_lifetime_seconds = token["exp"] - token["iat"]
+        self.assertEqual(
+            token_lifetime_seconds,
+            int(settings.TEMPORARY_LOGIN_TOKEN_LIFETIME.total_seconds()),
+        )
