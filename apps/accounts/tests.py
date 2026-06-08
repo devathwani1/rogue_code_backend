@@ -19,11 +19,13 @@ class AccountsTests(TestCase):
         response = self.client.post(self.register_url, {
             "email": self.email,
             "password": self.password,
-            "confirm_password": self.password
+            "confirm_password": self.password,
+            "age": 18
         })
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(response.data["auth_state"], AuthState.SUCCESS)
         self.assertEqual(response.data["action_required"], ActionRequired.VERIFY_EMAIL)
+        self.assertEqual(User.objects.get(email=self.email).age, 18)
         
         # Verify email sent
         self.assertEqual(len(mail.outbox), 1)
@@ -33,7 +35,8 @@ class AccountsTests(TestCase):
         response = self.client.post(self.register_url, {
             "email": self.email,
             "password": self.password,
-            "confirm_password": self.password
+            "confirm_password": self.password,
+            "age": 18
         })
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data["auth_state"], AuthState.EMAIL_NOT_VERIFIED)
@@ -48,11 +51,23 @@ class AccountsTests(TestCase):
         response = self.client.post(self.register_url, {
             "email": self.email,
             "password": self.password,
-            "confirm_password": self.password
+            "confirm_password": self.password,
+            "age": 18
         })
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data["auth_state"], AuthState.EMAIL_ALREADY_REGISTERED)
         self.assertEqual(response.data["action_required"], ActionRequired.LOGIN)
+
+    def test_registration_rejects_underage_user(self):
+        response = self.client.post(self.register_url, {
+            "email": "underage@example.com",
+            "password": self.password,
+            "confirm_password": self.password,
+            "age": 17
+        })
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertFalse(User.objects.filter(email="underage@example.com").exists())
+        self.assertIn("age", response.data)
 
     def test_login_unverified(self):
         # Create unverified user
