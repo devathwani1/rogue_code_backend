@@ -1,10 +1,14 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import serializers, status
 from rest_framework.permissions import AllowAny
 
 from apps.accounts.services.auth import AuthService
-from apps.common.utils import Utils
+
+
+class GoogleAuthSerializer(serializers.Serializer):
+    credential = serializers.CharField()
+    temporary_login = serializers.BooleanField(required=False, default=False)
 
 
 class GoogleAuthView(APIView):
@@ -16,15 +20,11 @@ class GoogleAuthView(APIView):
     permission_classes = [AllowAny]
 
     def post(self, request):
-        credential = request.data.get("credential")
-        if not credential or not isinstance(credential, str):
-            return Response(
-                status=status.HTTP_400_BAD_REQUEST,
-                data=Utils.error_response_data(
-                    message="Missing credential",
-                    error=["Request body must include a non-empty 'credential' string (Google ID token)."],
-                ),
-            )
+        serializer = GoogleAuthSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
 
-        result = AuthService.google_auth(credential.strip())
+        result = AuthService.google_auth(
+            serializer.validated_data["credential"].strip(),
+            temporary_login=serializer.validated_data["temporary_login"],
+        )
         return Response(status=status.HTTP_200_OK, data=result.to_dict())

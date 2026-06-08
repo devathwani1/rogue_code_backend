@@ -186,6 +186,7 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
     "AUTH_HEADER_TYPES": ("Bearer",),
 }
+TEMPORARY_LOGIN_TOKEN_LIFETIME = timedelta(minutes=10)
 
 
 #Email config
