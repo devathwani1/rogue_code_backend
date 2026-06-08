@@ -9,8 +9,9 @@ from apps.common.utils import Utils
 
 class GoogleAuthView(APIView):
     """
-    POST { "credential": "<Google ID token JWT from GIS>" }
+    POST { "credential": "<Google ID token JWT from GIS>", "age": 18 }
     Same response shape as email/password login (success, data.token, ...).
+    Age is required only when the Google credential creates a new account.
     """
 
     permission_classes = [AllowAny]
@@ -26,5 +27,5 @@ class GoogleAuthView(APIView):
                 ),
             )
 
-        result = AuthService.google_auth(credential.strip())
+        result = AuthService.google_auth(credential.strip(), age=request.data.get("age"))
         return Response(status=status.HTTP_200_OK, data=result.to_dict())

@@ -68,10 +68,35 @@ class AuthService:
         )
 
     @staticmethod
-    def google_auth(credential: str) -> AuthResult:
+    def google_auth(credential: str, age=None) -> AuthResult:
         """
         Verify Google ID token (JWT) from GIS, then sign up or sign in by email.
         """
+        normalized_age = None
+        if age is not None and age != "":
+            if isinstance(age, bool) or (isinstance(age, float) and not age.is_integer()):
+                return AuthResult(
+                    success=False,
+                    auth_state=AuthState.INVALID_AGE,
+                    message="Please enter your age as a whole number.",
+                )
+
+            try:
+                normalized_age = int(age)
+            except (TypeError, ValueError):
+                return AuthResult(
+                    success=False,
+                    auth_state=AuthState.INVALID_AGE,
+                    message="Please enter your age as a whole number.",
+                )
+
+            if normalized_age < 18:
+                return AuthResult(
+                    success=False,
+                    auth_state=AuthState.INVALID_AGE,
+                    message="You must be at least 18 years old to register.",
+                )
+
         client_ids = (
             getattr(settings, "GOOGLE_OAUTH_CLIENT_IDS", None)
             or getattr(settings, "GOOGLE_OAUTH_CLIENT_ID", "")
@@ -180,7 +205,14 @@ class AuthService:
         if user:
             if not user.is_verified:
                 user.is_verified = True
-                user.save(update_fields=["is_verified"])
+                update_fields = ["is_verified"]
+                if normalized_age is not None and user.age is None:
+                    user.age = normalized_age
+                    update_fields.append("age")
+                user.save(update_fields=update_fields)
+            elif normalized_age is not None and user.age is None:
+                user.age = normalized_age
+                user.save(update_fields=["age"])
             token = AuthService.generate_tokens(user)
             return AuthResult(
                 success=True,
@@ -189,10 +221,18 @@ class AuthService:
                 data={"token": token},
             )
 
+        if normalized_age is None:
+            return AuthResult(
+                success=False,
+                auth_state=AuthState.INVALID_AGE,
+                message="Age is required to create an account.",
+            )
+
         with transaction.atomic():
             user = User(
                 username=email,
                 email=email,
+                age=normalized_age,
                 is_active=True,
                 is_verified=True,
             )
