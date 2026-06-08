@@ -8,10 +8,16 @@ User = get_user_model()
 
 class RegisterSerializer(serializers.ModelSerializer):
     confirm_password = serializers.CharField(write_only=True)
+    age = serializers.IntegerField(
+        required=True,
+        min_value=18,
+        max_value=150,
+        error_messages={"min_value": "You must be at least 18 years old to register."},
+    )
 
     class Meta:
         model = User
-        fields = ("email", "password", "confirm_password")
+        fields = ("email", "password", "confirm_password", "age")
         extra_kwargs = {
             "password": {"write_only": True}
         }
@@ -21,6 +27,11 @@ class RegisterSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Passwords do not match")
         return data
 
+    def validate_age(self, value):
+        if value < 18:
+            raise serializers.ValidationError("You must be at least 18 years old to register.")
+        return value
+
     def create(self, validated_data):
         validated_data.pop("confirm_password")
         with transaction.atomic():
@@ -28,6 +39,7 @@ class RegisterSerializer(serializers.ModelSerializer):
                 username=validated_data["email"],
                 email=validated_data["email"],
                 password=validated_data["password"],
+                age=validated_data["age"],
                 is_active=True,
                 is_verified=False
             )
