@@ -4,6 +4,7 @@ from django.db import models
 class User(AbstractUser):
     user_id = models.AutoField(primary_key=True)
     email = models.EmailField(unique=True)
+    age = models.PositiveIntegerField(null=True, blank=True)
 
     is_verified = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
