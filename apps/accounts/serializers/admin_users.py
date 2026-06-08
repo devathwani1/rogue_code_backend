@@ -18,6 +18,7 @@ class AdminUserSerializer(serializers.ModelSerializer):
         fields = (
             "user_id",
             "email",
+            "age",
             "username",
             "first_name",
             "last_name",

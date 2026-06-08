@@ -8,10 +8,11 @@ User = get_user_model()
 
 class RegisterSerializer(serializers.ModelSerializer):
     confirm_password = serializers.CharField(write_only=True)
+    age = serializers.IntegerField(min_value=18, max_value=150)
 
     class Meta:
         model = User
-        fields = ("email", "password", "confirm_password")
+        fields = ("email", "password", "confirm_password", "age")
         extra_kwargs = {
             "password": {"write_only": True}
         }
@@ -28,6 +29,7 @@ class RegisterSerializer(serializers.ModelSerializer):
                 username=validated_data["email"],
                 email=validated_data["email"],
                 password=validated_data["password"],
+                age=validated_data["age"],
                 is_active=True,
                 is_verified=False
             )
